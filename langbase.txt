@@ -203,6 +203,10 @@ class Kill:
     #when a user tried `+kill @squaswin` or `+kill @42`
     rejected_message = ""
     
+    #when a user tried `+kill @everyone`
+    # {0}     : Caller name
+    kill_caller = ""
+    
     #the bot asks for "abort" to stop the command
     chargin_ma_laser = ""
     firin_ma_laser = ""
