@@ -11,8 +11,8 @@
 
 ### Completion
 Up to date:
-[ ] English
-[ ] French / Frawst
-[ ] German
-[ ] Spanish
-[ ] Robotic / eye-sigil
+ - [ ] English
+ - [ ] French / Frawst
+ - [ ] German
+ - [ ] Spanish
+ - [ ] Robotic / eye-sigil
