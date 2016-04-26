@@ -1,0 +1,1897 @@
+"""
+This is the outputs file for 42
+please fill in each line for your language
+where a tag (e.g. {0}) is supplied, please use it.
+
+most variables shouldnt be too hard to understand
+context for, but if there is any confusion, just ask
+squas about the context.
+
+Please put all command calls inside backticks and 
+inglude the + sign
+
+Bad:  Use help tag for info
+Good: Use `+help tag` for info
+
+Please place all user entered variables in single quotes
+
+Bad:  Use `+tag create tagname content`
+Good: Use `+tag create 'tagname' 'content'`
+
+If you wish to use \" instead of ' in your messages, feel
+free to, but keep it consistent
+
+Please place all optional args inside square brackets
+
+Bad: Use `+tag clone 'name' 'server' 'newname'
+
+i will handle line seperation in code. so you will be 
+shamed for double spacing if you do it yourself
+
+Bad:  Info about **{0}**#{1}\n
+Good: Info about **{0}**#{1}
+
+Lists: If a field has `field = [""]` in it, feel free to make
+that comma seperated list as long as you want.
+"""
+
+class Help:
+    help_shorthelp = ""
+    help_longhelp = ""
+    """
+    Available commands
+    `+help ['query']`
+    `+help ['command name']
+    """
+
+    #these are in +help at the top and bottom
+    header = ""
+    footer = ""
+    
+    #this is the default statement when no shorthelp is given.
+    undefined = ""
+    
+    #this is when the user searches for a non existant command, eg +help foobar
+    command_not_found = ""
+    
+    #this is used when someone calls a command's longhelp
+    command_longhelp_header = ""
+    
+    #in the bots section, tutorial and botban have brief command descriptions
+    tutorial_description = ""
+    botban_description = ""
+    
+class Categories:
+    #These are the names of categories to be shown in +help
+    #these are subject to change as development goes on
+    Bot = ""
+    Stock = ""
+    Tools = ""
+    Moderation = ""
+    RNG = ""
+    Games = ""
+    Memory = ""
+    Pok�mon = ""
+    Splatoon = ""
+    Mabinogi = ""
+    Secret = ""
+
+class Language:
+    shorthelp = ""
+    
+    #in language, longhelp is wierd. it will post this message
+    """
+    `+language en` makes me speak english
+    `+language fr` fait parler en fran�ais moi
+    ...
+    """
+    #so for this, I only want you to add your own line to the message
+    #ie, the part _after_ the command call ("makes me speak english")
+    longhelp = ""
+    
+    no_arguement = ""
+    invalid_arguement = ""
+    
+    successful_channel_change = ""
+    successful_server_change = ""
+    
+class Hello:
+    shorthelp = ""
+    longhelp = None
+    message = ""
+    
+class Check:
+    shorthelp = ""
+    longhelp = None
+    #these descriptions show up in the command
+    owner = ""              #squas himself only
+    buds = ""               #squas' close friends
+    pm = ""                 #in PM only
+    no_pm = ""              #in Server only
+    server_owner = ""       #owner of server
+    server_admin = "'Manage Roles'"
+    server_manager = "'Manage Server'"
+    server_mod = "'Manage Messages'"
+    ban = "'Ban Members'"
+    kick = "'Kick Members'"
+    bot_admin = "'Best Friends'"
+    bot_mod = "'Friends'"
+    old_user = ""           #on server for 15 minutes
+    bot_banned = ""
+    shitposter = None
+    
+class Basket:
+    shorthelp = ""
+    #longhelp credits frawst and toby for basket
+    longhelp = ""
+    #this command returns a link and nothing else
+    
+class Youtube:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+youtube 'query`
+    """
+    
+    # {0}     : command name: "youtube" or "ytr"
+    no_query_given = ""
+    
+    connection_error = ""
+    no_video_found = ""
+    returned_an_advert = ""
+    #this has a 20% chance of being returned
+    returned_an_advert_snark = ""
+    
+class Ytr:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+ytr 'query'`
+    """
+    #this command uses responses from Youtube
+    
+class Hug:
+    shorthelp = ""
+    longhelp = None
+    action = "\*hug*"
+    
+class Lenny:
+    #no help needed
+    shorthelp = ""
+    longhelp = None
+    
+class Echo:
+    #no help needed
+    shorthelp = ""
+    longhelp = None
+    
+class Join:
+    shorthelp = ""
+    longhelp = None
+    
+    # {0}     : oauth2 url invote
+    message_fluff = "{0}"
+    
+class Leave:
+    shorthelp = ""
+    longhelp = ""
+    #the caller must say "confirm" to finalise this command
+    ask_for_confirmation = ""
+    goodbye_message = ""
+    
+class Cheeky:
+    shorthelp = ""
+    longhelp = None
+    
+class Game:
+    shorthelp = ""
+    longhelp = None
+    
+class Meme:
+    shorthelp = ""
+    longhelp = None
+    
+class Kill:
+    shorthelp = ""
+    longhelp = ""
+    
+    #when a user tried `+kill @squaswin` or `+kill @42`
+    rejected_message = ""
+    
+    #the bot asks for "abort" to stop the command
+    chargin_ma_laser = ""
+    firin_ma_laser = ""
+    stoppin_ma_laser = ""
+    
+    #when someone kills a mention, the bot PM's them
+    pm_users = ""
+    
+class Kiwi:
+    shorthelp = ""
+    longhelp = None
+    
+class Sync:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+sync ['start']`
+    """
+    
+class Remind:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+remind 'seconds' ['message']`
+    `+remind 'hh:mm:ss' ['message']`
+    """
+    
+    no_arguement = ""
+    invalid_time = ""
+    
+    # {0}      : Mention to username
+    # {1}      : Reminder message
+    no_reminder = ""
+    with_reminder = ""
+    
+    cancel_reminder = ""
+    
+    #this asks for "`+cancel`"
+    # {0}      : The hours
+    # {1:0<2}  : The minutes
+    # {2:0<2}  : The seconds
+    reminder_start = ""
+
+class Faq:
+    shorthelp = ""
+    longhelp = None
+    message = """
+Use this space here to create your message. It should be less than \
+2000 characters. Newlines here are going to be read by the bot, so \
+to ignore this behaviour, use a \ at the end of a line.
+Questions should be formatted in **bold** and start with a "Q:" \
+or equivalent
+Answers should be formatted in _italics_ and start with an "A" \
+or equivalent.
+Write your answers in the style of the bot where apropiate.
+"""
+
+class Changes:
+    shorthelp = ""
+    longhelp = "This command is only available in english."
+    
+class Marie:
+    shorthelp = ""
+    longhelp = None
+
+class Frawst:
+    shorthelp = ""
+    longhelp = None
+    
+class Puffu:
+    shorthelp = ""
+    longhelp = None
+    
+class Me:
+    shorthelp = ""
+    longhelp = None
+    # {0}     : The users action
+    formatter = " * {0}"
+    
+    #This runs on 0.1% chance
+    jerry = " * Jerry came, too."
+    
+class Archive:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+archive ['limit']`
+    """
+    logsfrom_error = "'Read Message History'"
+    
+    # {0}     : The message object
+    # {0.timestamp}
+    # {0.channel.name}
+    # {0.author.name}
+    # {0.content}
+    formatter = "{0.timestamp} {0.channel.name} {0.author.name}: {0.content}"
+    
+class Mentions:
+    shorthelp = ""
+    longhelp = None
+    logsfrom_error = "'Read Message History'"
+    pm_start_message = ""
+    
+    # {0}     : The message object
+    # {0.timestamp}
+    # {0.author.name}
+    # {0.content}
+    formatter = "{0.timestamp} {0.author.name} said {0.content}"
+    
+    scanning_complete = ""
+    
+class Currency:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+currency 'value' 'FROM' ['TO']`
+    `+currency list`
+    """
+    no_arguements = ""
+    invalid_value = ""
+    # {0}     : the error message
+    error_message = "An error occured: {0}"
+    
+    #- XL Code Block ---------------------------
+    # All non stated words **must** be lowercase
+    # {0:.2f} : The input value
+    # {1}     : The input currency
+    header = "converting {0:.2f} from {1}"
+    # {0}     : The output currency
+    # {1:.4f} : The output values
+    output = "to {0}: {1:.4f}"
+    #-------------------------------------------
+    
+class Define:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+define 'query'`
+    """
+    no_results = ""
+    #this happens on a 20% chance
+    # {0}     : The initial query (optional)
+    no_results_snark = [
+        "http://lmgtfy.com/?q=define%20{0}"
+    ]
+    
+    # {0}     : The initial query
+    definition_header = ""
+    
+class Napstablook:
+    shorthelp = ""
+    longhelp = None
+    shyness = ""
+    
+class Changeavy:
+    shorthelp = ""
+    longhelp = "The responses to this command are only in English"
+    
+class Fuck:
+    shorthelp = ""
+    longhelp = None
+    message = ""
+    
+class Slap:
+    shorthelp = ""
+    longhelp = None
+    # {0}     : The target
+    action = "\\*slaps {0}\\*"
+    
+class Now:
+    shorthelp = ""
+    longhelp = None
+    footer = ""
+    
+class Ty:
+    shorthelp = ""
+    longhelp = None
+    message = "np"
+    
+class Tutorial:
+    shorthelp = ""
+    longhelp = ""
+    #The bot listens to ++help from here onwards
+    header = ""
+    #this is a long one. You can have up to 10 parts here
+    message trail = [
+        "The next upto 10 messages should briefly describe the features",
+        "The current script contains: [1] +leave, +faq",
+        "[2] Moderation: +colour, +ban",
+        "[3] Information: +info, +welcome",
+        "[4] Memory: +tag, +profile",
+        "[5] Fun: +me, +hug, +avy, +lenny",
+        "[6] Advanced: +check and +help",
+        "[7] Abuse: +botban, +toggle",
+        "This is by no means a solid script, so feel free to do what you want with it.",
+        "Please dont do the [number] either. I will add those in for you ;)"
+    ]
+    #this should link https://discord.gg/0ptu0m1G0a2KrjFq
+    #and also http://fennekid.github.io
+    footer = ""
+    
+class Lmgtfy:
+    shorthelp = ""
+    longhelp = None
+    no_arguements = ""
+    
+class H5:
+    shorthelp = ""
+    longhelp = None
+    message = "High Five| :hand::skin-tone-1:"
+    
+class Ie:
+    shorthelp = ""
+    longhelp = None
+    
+class Discrim:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+discrim ['0000']
+    """
+    # {0}     : The discrim
+    found_match = ""
+    no_match = ""
+    
+class Gold:
+    shorthelp = ""
+    longhelp = None
+    # -XL Code Block ----------------------
+    # only use uppercase for the words "Discord Gold"
+    message = "Discord Gold is required to view this message"
+    # -------------------------------------
+    
+class Rip:
+    shorthelp = ""
+    longhelp = None
+    rip_35 = "Yes you are, you nerd."
+    
+class Botban:
+    shorthelp = ""
+    longhelp = ""
+    """
+    `Available commands:
+    `+botban 'member'`
+    """
+    no_arguement = ""
+    no_member_found = ""
+    too_many_members = ""
+    cannot_ban_server_owner = ""
+    cannot_ban_squas = ""
+    #runs on 2% chance
+    cannot_ban_squas_snark = "DON'T YOU HURT MY SQUAS!!"
+    
+    command_success = ""
+    #this message should let the target know where they were
+    #botbanned and warn them that 3 bans = bad time.
+    # {0}     : Server name
+    # {1}     : Number of bans
+    pm_to_target = ""
+    pm_on_globalban = ""
+    
+class Botunban:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+botunban 'member'`
+    """
+    no_arguement = ""
+    no_member_found = ""
+    too_many_members = ""
+    target_not_banned = ""
+    command_success = ""
+    # {0}     : Server name
+    # {1}     : Number of bans
+    pm_to_target = ""
+    
+    
+class Globalban:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+globalban 'member'`
+    """
+    no_arguements = ""
+    no_member_found = ""
+    success = ""
+    
+class Kick:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+kick 'member'`
+    """
+    no_arguements = ""
+    no_member_found = ""
+    too_many_members = ""
+    command_success = ""
+    no_permission = "'Kick Members'"
+    
+# lolrip @ctrl+c ctrl+v
+    
+class Ban:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+ban 'member'`
+    """
+    no_arguements = ""
+    no_member_found = ""
+    too_many_members = ""
+    command_success = ""
+    no_permission = "'Ban Members'"
+
+class Softban:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+Softban 'member'`
+    """
+    no_arguements = ""
+    no_member_found = ""
+    too_many_members = ""
+    command_success = ""
+    no_permission = "'Ban Members'"
+
+class Giveme:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    -- user
+    `+giveme 'name'`
+    `+giveme list`
+    -- server admin
+    `+giveme set 'name' 'role'`
+    `+giveme clear 'name'`
+    `+giveme exclusive
+    """
+    
+    no_arguement = ""
+    
+    # giveme list
+    list_no_givemes = ""
+    # {0}     : Server name
+    # {1}     : , seperated list
+    list_message = ""
+    
+    #giveme set
+    set_not_enough_args = ""
+    set_reserved_name = ""
+    set_role_not_found = ""
+    # {0}     : Giveme name
+    # {1}     : Role name
+    set_success = ""
+    
+    #giveme clear
+    clear_not_enough_args = ""
+    clear_no_server_givemes = ""
+    clear_nonexistant_name = ""
+    clear_success = ""
+    
+    #giveme exclusive
+    # {0}     : New state (True/False)
+    exclusive_success = ""
+    
+    #giveme get
+    get_private_channel_error = ""
+    get_giveme_not_found = ""
+    #if a role is renamed or deleted, 42 can't find it
+    get_role_finding_error = ""
+    get_no_permissions = "'Manage Role'"
+    # {0}     : The giveme name
+    get_exclusive_success = ""   #replaced role
+    get_normal_success = ""      #added role
+    
+class Blacklist:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+blacklist add 'term'`
+    `+blacklist remove`
+    `+blacklist list`
+    `+blacklist clear`
+    """
+    # {0}     : The name of the user
+    message_deleted_alert = ""
+    no_permissions = "'Manage Messages'"
+    no_arguement = ""
+    no_blacklisted_words = ""
+    
+    #blacklist add
+    add_not_enough_args = ""
+    add_query_too_short = "req 4+ letters"
+    # {0}     : Added query
+    add_success = ""
+    
+    #blacklist remove (interractive)
+    #lits to send is generated. bot asks for the _number_ of an entry
+    remove_request_footer = ""
+    remove_request_timeout = ""
+    remove_success = ""
+    
+    #blacklist clear
+    #bot listens for "confirm"
+    clear_question = ""
+    clear_timeout = ""
+    clear_success = ""
+    
+    #blacklist list
+    list_header = ""
+    
+class Brainfuck:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    +brainfuck 'script' ['input']
+    +brainfuck ref
+    """
+    reference_sheet = """```brainfuck
+>  increments pointer
+<  decrements pointer
++  increments value
+-  decrements value
+[  jump if 0 to ]
+]  jump to [
+.  print char to output
+,  read char from input
+```"""
+    error_no_instruction = ""
+    error_out_of_range = ""     #range from 0 - 255
+    error_output_len = ""       #range from 0 - 5000
+    error_invalid_char = ""     #non ascii input
+    error_mismatched_loops = ""
+    error_max_cycles = ""       #range from 0 - 65535
+    # {0}     : The output message
+    # {1}     : The step counter
+    # {2}     : The character counter
+    output = ""
+    
+class Shell:
+    shorthelp: ""
+    longhelp: "This command is only available in english."
+    
+class Event:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available Commands
+    -- user
+    `+event next`
+    `+event list`
+    -- bot mod
+    `+event set 'date' 'message'`
+    `+event add 'date' 'message'`
+    `+event delete 'date'`
+    `+event clear 'date'`
+    `+event wipe`
+    """
+    no_arguement = ""
+    invalid_arguement = ""
+    no_permission = ""
+    no_events = ""
+    months = [None, #ignore this please
+        "JAN", "FEB", "MAR", "APR", "MAY", "JUN",
+        "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"
+    ]
+    date_read_error = "An error occured: " # + error message
+    
+    #event next
+    # {0}     : The number of days
+    next_event_message = ""
+    
+    #event add
+    add_not_enouth_args = ""
+    add_success = ""
+    
+    #event set
+    set_not_enough_args = ""
+    set_success = ""
+    
+    #event delete
+    delete_not_enough_args = ""
+    delete_no_events_on_day = ""
+    #this command asks for the number of an event
+    delete_event_list_header = ""
+    delete_event_list_footer = ""
+    delete_request_timeout = ""
+    delete_success = ""
+    
+    #event clear
+    clear_not_enough_args = ""
+    clear_no_events_on_day = ""
+    ckear_success = ""
+    
+    #event wipe
+    #this command asks for "continue"
+    wipe_request = ""
+    wipe_request_timeout = ""
+    wipe_success = ""
+    
+class Poll:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+poll start 'question' 'answer' 'answer' [...]`
+    `+poll results`
+    `+poll close`
+    """
+    no_arguements = ""
+    invalid_arguements = ""
+    
+    #poll start
+    start_poll_already_exists = ""
+    start_not_enough_args = "" #req 5 args
+    start_success = ""
+    
+    no_open_poll = ""
+    no_votes = ""
+    #poll close
+    close_success = ""
+    
+    #poll results
+    results_footer = ""
+    
+class Vote:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+vote`
+    `+vote 'number'`
+    """
+    no_open_poll = ""
+    invalid_vote_number = ""
+    # {0}     : Option name
+    vote_success = ""
+    
+class Colour:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+colour 'role' '0xRRGGBB'`
+    `+colour 'name' '0xRRGGBB'`
+    `+colour get ['role|name']`
+    """
+    no_arguements = ""
+    no_permissions = "'Manage Roles'"
+    
+    #colour get
+    get_invalid_name = ""
+    get_no_custom_colour = ""
+    # {0}     : User or Role name
+    # {1}     : The colour of the role
+    get_return_role = ""
+    get_message_too_long = ""
+    
+    #colour set
+    set_not_enough_args = ""
+    set_no_role_or_user = ""
+    set_invalid_colour = ""
+    
+class Rps:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+rps ['player']`
+    """
+    #bot waits for "rock" "paper" or "scissors"
+    send_get_request = ""
+    send_get_response = ""
+    
+    # {0}     : player1 name (throws outside object)
+    # {1}     : player2 name (throws inside object)
+    results_cases = {
+        "rock": {
+            "rock": "", # draw
+            "paper": "", # {1} wins
+            "scissors": "" # {0} wins
+        },
+        "paper": {
+            "rock": "", # {0} wins
+            "paper": "", # draw
+            "scissors": "" # {1} wins
+        },
+        "scissors": {
+            "rock": "", # {1} wins
+            "paper": "", # {0} wins
+            "scissors": "" # draw
+        }
+    }
+    # bot waits for "+accept"
+    accept_from_target = ""
+    accept_from_anyone = ""
+    rps_timeout = ""
+    
+class Evict:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+evict 'name'`
+    """
+    no_arguements = ""
+    no_target_found = ""
+    target_evicted = ""
+    target_allowed = ""
+    
+class Blackjack:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+blackjack 'wager'`
+    """
+    no_arguements = ""
+    not_enough_coins = ""
+    coin_cap_hit = "" #cap is 150
+    # `{0}`   : The player hand
+    # {1}     : The coins won
+    player_got_21 = ""
+    
+    #this requets `+hit` or `+stand`
+    # {0}     : The dealer's card
+    # `{1}`   : The player hand
+    # {2}     : The player hand total
+    player_turn = ""
+    
+    # `[0}`   : The player hand
+    # {1}     : The player hand total
+    player_bust = ""
+    
+    # {0}     : The winnings
+    player_5_card_hand = ""
+    
+    # `{dh}`  : Dealer hand
+    # {dt}    : Dealer total
+    # `{ph}`  : Player hand
+    # {pt}    : Player total
+    # {win}   : winnings
+    dealer_bust = ""
+    dealer_win = ""
+    player_win = ""
+
+class Coins:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+coins [get ['name']]`
+    `+coins give 'amount' 'user'`
+    `+coins add`
+    """
+    #coins get
+    get_target_not_found = ""
+    vectors = [None, "1 number",
+        "2 numbers", "3 numbers", "4 numbers"
+        "5 numbers", "6 numbers", "7 numbers",
+        "8 numbers", "9 numbers"
+    ]
+    get_add_ready_now = ""
+    # {0:0>2}  : The hours
+    # {0:0>2}  : The minutes
+    get_add_ready_in = ""
+    
+    #coins add
+    add_success = ""
+    add_cooldown = ""
+    
+    #coins gove
+    give_no_args = ""
+    give_target_not_found = ""
+    give_coins_read_error = ""
+    give_theft_response = ""
+    give_not_enough_coins = ""
+    give_success = ""
+    
+class Slots:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+slots [1|2]
+    
+    Paytable goes in longhelp
+    
+            Bet   1    2
+    $$$ $$$ $$$  200 1000
+    $ $ $ $ $ $   50  150
+     $   $   $    10   20
+    ANY ANY ANY    5   10
+    --- --- ---    1    2
+    """
+    too_many_coins = "" #machine only accepts 1 or 2
+    not_enough_coins = ""
+    # {0}     : winnings
+    payout_message = ""
+    
+class Spyke:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Paytable goes in longhelp
+    ------------|---30--|
+    ISS ISS ISS | 20000 |
+    ISS ISS ANY |  4500 |
+    ISS ANY ANY |   180 |
+    ------------|-------|
+    SDU SDU SDU |   250 |
+    MATCH 2 ANY |   100 |
+    """
+
+class Fibbage:
+    shorthelp = ""
+    longhelp = ""
+    """
+    This command is only available in english
+    The messages will be hard coded. This is just
+    here to make +help work.
+    """
+    
+class Outburst:
+    shorthelp = ""
+    longhelp = ""
+    """
+    This is the same as fibbage.
+    """
+    
+class Gear:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+gear brand 'brand'`
+    `+gear brand list`
+    `+gear ability 'ability'`
+    `+gear ability list`
+    `+gear search 'gear name'`
+    `+gear list 'ability'`
+    `+gear brandlist 'brand'`
+    `+gear find 'ability1' 'ability2'`
+    """
+    no_arguement = ""
+    unknown_arguement = ""
+    
+    #gear brand
+    brand_no_query = ""
+    brand_unknown = ""
+    # {name}  : The name of the brand
+    # {buff}  : The buffed ability
+    # {nerf}  : The nerfed ability
+    brand_neutral = ""
+    brand_non_neutral = ""
+    
+    #gear ability
+    ability_no_query = ""
+    ability_unknown = ""
+    # {0}     : Name of ability
+    # {1[buff]} : Buffed brand
+    # {1[nerf]} : Nerfed brand
+    ability_message = ""
+    
+    #gear search
+    search_no_query = ""
+    search_query_too_short = ""
+    # {0}     : Gear name
+    # {1[pal]} : The gear data...
+    # {1[ability][main]}
+    # {1[type]} : (hat, clothes or shoes)
+    # {1[brand]}
+    search_formatter = ""
+    search_formatter_pal = ""
+    
+    # {0}     : The query
+    search_no_results = ""
+    
+    # {0}     : The number of responses
+    search_results_header = ""
+    
+    #the bot waits for a number index
+    search_results_footer = ""
+    
+    # {0}     : The number of responses
+    # {1}     : The query
+    search_returned_too_much = ""
+    
+    #gear list
+    list_no_query = ""
+    list_invalid_ability = ""
+    
+    #gear brandlist
+    brandlist_no_query = ""
+    brandlist_invalid_ability = ""
+    
+    #gear find
+    find_no_queries = "" #requires 2 args
+    find_invalid_abilitys = ""
+    find_both_abils_unique = ""
+    
+    # {0}     : Slot (hat, clothes, shoes)
+    # {1}     : Gearname
+    find_got_match = ""
+    find_got_neutral = ""
+    find_got_nothing = ""
+    
+class Splatmeta:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+splatmeta damage 'wpn' 'dmg' 'def'`
+    `+splatmeta damage 'wpn' 'dmg' ?`
+    `+splatmeta damage 'wpn' ? 'def'`
+    [Oh god, do I have to do this now? Can it just wait?]
+    #TODO do this
+    """
+    
+class Info:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Oh boy. this is gonna be fun to fill in
+    Available commands:
+    +info [user ['name']]
+    +info server
+    +info 42
+    +info world
+    """
+    no_arguements = ""
+    #info user
+    user_no_args = ""
+    user_target_not_found = ""
+    # {0}     : Name
+    # {1}     : Discriminator
+    user_name = ""
+    # {0}     : ID
+    user_id = ""
+    # {0}     : Created date
+    user_created = ""
+    # {0}     : Role list
+    user_roles = ""
+    user_no_roles = ""
+    # {0:06X} : Colour
+    user_colour = ""
+    # {0}     : Colour name
+    user_colour_is_default = ""
+    # {0}     : Server join date
+    msg_days_ago = "{0} Days ago"
+    msg_hours_ago = "{0} Hours ago"
+    # {0}     : Server join date
+    # {1}     : Server joined days ago
+    user_joined = ""
+    # {0}     : Joined score
+    user_joined_score = ""
+    # {0}     : Server member count
+    # {1}     : Server name
+    user_server_member_data = ""
+    
+    #info user > Member
+    # {0}     : Game
+    member_game_playing = ""
+    # {0}     : Tag count
+    member_tag_count = ""
+    # {0}     : Time last seen
+    member_last_seen = ""
+    member_not_seen = ""
+    
+    #info user > Bot
+    bot_user_is_bot_header = ""
+    bot_has_no_info = ""
+    # {0}     : Owner name
+    bot_owner = ""
+    # {0}     : Invoke char
+    # {1}     : Help command
+    bot_help = ""
+    # {0}     : Invite Link
+    bot_invite = ""
+    
+    #info server
+    # {0}     : Name
+    server_name = ""
+    # {0}     : ID
+    server_id = ""
+    # {0}     : Owner
+    # {1}     : Creation date
+    server_details = ""
+    # {0}     : Text channel count
+    # {1}     : Voice channel count
+    server_channels = ""
+    # {0}     : Most spammy user name
+    server_spammiest_user = ""
+    # {0}     : Most spammy channel name
+    server_spammiest_channel = ""
+    # {0}     : Members
+    # {1}     : Online Members
+    # {2}     : Idle Members
+    server_members = ""
+    # {0.name} : Member name
+    # {0.joined_at} : Member joined date
+    server_newest_user = ""
+    # {0}     : Users in voice
+    # {1}     : Users in game
+    server_in_voice = ""
+    # {0}     : Bot count
+    server_bots = ""
+    
+    #info server > 42
+    # {0}     : 42 joined
+    server_me_joined_at = ""
+    # {0}     : Welcome behaviour
+    server_me_welcome = ""
+    # {0}     : Tag count
+    server_me_tag_count = ""
+    
+    #info 42
+    self_name = ""
+    # {0}     : ID
+    self_id = ""
+    # {0}     : Command count
+    self_command_count = ""
+    # {0}     : Hours
+    # {1}     : Minutes
+    # {2}     : Seconds
+    self_uptime = ""
+    # {0}     : Tag total
+    self_tag_count = ""
+    # {0}     : Command uses
+    self_command_count = ""
+    # {0}     : Users over all servers
+    # {1}     : Unique users
+    self_user_count = ""
+    # {0}     : Server count
+    self_server_count = ""
+    # {text}  : Text channels
+    # {voice} : Voice channels
+    self_channel_count = ""
+    
+    #info world
+    # {0}     : The field name (keys)
+    # {1}     : The server name
+    # {2}     : The number
+    # {2:.2f} : The number (non integer)
+    world_stats = {#only edit this vv
+        "popular"    : "most people",
+        "spacey"     : "msot channels",
+        "packed"     : "most ppl per text channel",
+        "empty"      : "least ppl per text channel",
+        "shitposting": "tags per user",
+        "vocal"      : "members in voice",
+        "chatty"     : "%age of seen messages",
+        "dependand"  : "command uses",
+    }
+    # {0}     : Username
+    # {1:.2f} : Messages seen
+    world_spammy_user = ""
+    # {0}     : Command name
+    # {1}     : Command uses
+    world_best_command = ""
+    # {o}     : Online
+    # {i}     : Idle
+    # {v}     : In voice
+    # {g}     : In Game
+    world_member_stats = ""
+    
+class Awards:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+awards popular`
+    `+awards spacey`
+    `+awards packed`
+    `+awards empty`
+    `+awards vocal`
+    `+awards gamer`
+    `+awards active`
+    `+awards dependant`
+    `+awards shitposting`
+    `+awards spammy`
+    `+awards command`
+    `+awards richest`
+    """
+    no_arguement = ""
+    invalid_arguement = ""
+    # All these end in a ": " as I append to the end
+    beat_popular = "Total users on all servers: "
+    best_spacey = ""
+    best_packed = ""
+    best_empty = ""
+    best_vocal = ""
+    best_gamer = ""
+    best_active = ""
+    best_dependant = ""
+    best_spammy = ""
+    best_shitposting = ""
+    best_command = ""
+    best_richest = ""
+    
+class Avy:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+avy ['name']`
+    `+avy server`
+    """
+    no_user_found = ""
+    
+class Msgcount:
+    shorthelp = ""
+    longhelp = None
+    
+class Mabiwiki:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    +mabiwiki 'query'
+    """
+    no_query = ""
+    returned_search = ""
+    
+class Autopost:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+autopost 'count' 'interval' 'message' ['message' ...]`
+    `+stop`
+    """
+    not_enough_args = ""
+    count_out_of_range = "" #range is 1 - 30
+    interval_out_of_range = "" #range is 3 - 60
+    #this command listens for "+stop"
+    # {0}     : The number of messages
+    autopost_start = ""
+    autopost_stop = ""
+    
+class Alerts:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+alerts set 'streamname'`
+    `+alerts off`
+    `+alerts list`
+    `+alerts toggle 'linked username'`
+    """
+    no_arguements = ""
+    # {0}     : Streamer's name
+    stream_started = "<http://www.twitch.tv/{0}>"
+    
+    #alerts set
+    set_no_args = ""
+    set_passed_url = "" #42 only accepts usernames, not urls
+    #this is appended with the error message
+    set_error = "error occured: "
+    set_success = ""
+    
+    #alerts off
+    off_no_stream = ""
+    off_success = ""
+    
+    #alerts list
+    list_no_streams = ""
+    
+    #alerts toggle
+    toggle_no_args = ""
+    toggle_no_target = "" #42 listens for username, not stream name
+    toggle_target_has_no_stream = ""
+    toggle_stream_enabled = ""
+    toggle_stream_disabled = ""
+    
+class Uplink:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+uplink 'server' 'channel'
+    """
+    no_arguements = ""
+    server_not_found = ""
+    # {0}     : Server name
+    channel_not_found = ""
+    
+    creating_uplink_host = ""
+    # {0}     : Host server
+    # {1}     : Host channel
+    creating_uplink_dest = ""
+    #the bot listens for "++close"
+    uplink_established_host = ""
+    
+    redtext_message = ""
+    
+    uplink_closed_dest = ""
+    uplink_closed_host = ""
+    
+class Ctrlf:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+ctrlf 'query'`
+    """
+    no_arguement = ""
+    query_too_short = "" #min length 4
+    query_too_long = "" #max length = 40
+    no_permission = "'Read Message History'"
+    no_results = ""
+    # {0}     : The number of matches
+    found_matches_header = ""
+    
+class Dex:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+dex 'number'`
+    `+dex 'name'`
+    `+dexentry 'num|name'`
+    `+dexdata 'num|name'`
+    Key: `H W` height and weight, `G` gender ratio, `B` body type
+    `EXP` base yield, `FR CR` friendship and catchrate, `EV` yield
+    `LV100` assumes 0EV, 0IV and a neutral nature
+    This command is only available in english.
+    """
+    no_arguements = ""
+    no_found_pokemon = ""
+    
+class Dexdata:
+    shorthelp = ""
+    longhelp = ""
+
+class Dexentry:
+    shorthelp = ""
+    longhelp = ""
+    
+class Movedex:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Availavble commands:
+    `+movedex 'movename'`
+    This command is only available in english
+    """
+    no_arguement = ""
+    no_move_found = ""
+    
+class Pokestats:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+pokestats 'name|num'
+    This command is only available in english
+    """
+    no_arguement = ""
+    no_found_pokemon = ""
+    
+class Matchup:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+matchup 'type'`
+    This command is only available in english
+    """
+    no_arguement = ""
+    no_found_type = ""
+    
+class Profile:
+    shorthelp = ""
+    # {fields} : the fields for 'field'
+    longhelp = ""
+    """
+    Available commands:
+    `+profile [get ['username']]`
+    `+profile nnid 'nnid'`
+    `+profile alt 'nnid'`
+    `+profile game 'game'`
+    `+profile 'field' 'data'`
+    `+profile clear 'field'
+    `+profile delete`
+    `+profile make`
+    """
+    
+    #profile help
+    help_squas_is_idiot_msg = "Sorry for the old profiles, but i changed the command to `+help profile` and I can't be bothered to retrogen old profiles."
+    
+    #profile get
+    get_not_in_pm = ""
+    get_no_user_found = ""
+    get_target_no_profile = ""
+    # {0}     : Target name
+    get_header = ""
+    # {0}     : List of games
+    get_games_list = "Catch them playing: {0}"
+    
+    #profile setter
+    setter_invalid_field = ""
+    setter_no_data = ""
+    # - These will be appended to setter_error_occured
+    setter_too_many_alts = ""          #max 3
+    setter_too_many_games = ""         #max 8
+    setter_game_too_long = ""          #max 32 chars
+    setter_too_many_custom_fields = "" #max 5
+    setter_data_too_long = ""          #max 80 chars
+    #this appends an error to the message
+    setter_error_occured = "Error occured: "
+    # {0}     : The field name
+    setter_success = ""    
+    
+    #profile clearer
+    clearer_no_arguements = ""
+    clearer_invalid_field = ""
+    # - These will be appended to clearer_error_occured
+    clearer_no_alts = ""
+    clearer_alt_timeout = ""
+    clearer_no_games = ""
+    clearer_game_timeout = ""
+    clearer_no_field = ""
+    #this appends an error to the message
+    clearer_error_occured = "Error occured: "
+    #this command asks for an index number
+    clearer_alt_footer = ""
+    #this command asks for a number or "all"
+    clearer_game_footer = ""
+    # {0}     : The field name
+    clearer_success = ""
+    
+    #profile delete
+    #this asks for "confirm"
+    delete_request = ""
+    delete_request_timeput = ""
+    delete_success = ""
+    
+    #profile make
+    make_not_in_pm = ""
+    """
+    oh boy. this is gonna be fun
+    The order of commands:
+    The bot first asks for an NNID
+    then a `;` semicolon seperated list of games
+    then up to 5 fields field first then response next
+    then a note
+    but at any time, the user can do `+skip`
+    """
+    make_trigger_skip = ""
+    #the bot listens for an input or "+skip"
+    make_nnid_request = ""
+    make_nnid_timeout = ""
+    #the bot listens for a ; seperated input or "+skip"
+    make_games_request = ""
+    make_games_timeout = ""
+    make_games_truncate_game_count = "" #user has > 8 games
+    make_games_truncate_game_name = "" #user game > 32 chrs
+    #the bot listens for a valid field name or "+skip"
+    # {0}     : Number of remaining fields
+    # {1}     : List of valid fields
+    make_field_request = ""
+    make_field_timeout = ""
+    #the bot listens for a value
+    # {0}     : Field name
+    make_field_data_request = ""
+    make_field_data_timeout = ""
+    make_field_data_too_long = "" #max 80 characters. req is skipped, not truncated
+    #the bot listens for a value or "+skip"
+    make_note_request = ""
+    make_note_timeout = ""
+    make_note_skipped = ""
+    make_note_too_long = "" #max 80 chars
+    make_success = ""
+    
+class Choose:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+choose 'optn1' 'optn2' [...]`
+    """
+    no_choices = ""
+    only_1_choice = ""
+    outcomes_the_same = ""
+    
+class Dice:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+dice 'nDf' ['nDf' ...]`
+    """
+    no_dice = ""
+    too_many_dice_groups = "" #max 6
+    invalid_dice = ""
+    # {0}     : Number of faces
+    faces_out_of_range = "" #between 1 - 100
+    too_many_dice = "" #max 50
+    results_header = ""
+    # {0}     : Dice count
+    # {1}     : Dice Faces
+    # {2}     : List of results (fmt: [1, 2, 3])
+    # {3}     : Total
+    results_line = ""
+    # {0}     : Counter (fmt {1:10, 2:3, 5:11})
+    results_counting_footer = ""
+    # {0}     : Total
+    results_tallying_footer = ""
+    msg_char_limit_hit = ""
+    
+class Random:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+random number ['max']`
+    `+random lenny`
+    `+random heart` <<Hidden
+    `+random coin`
+    `+random tag`
+    `+random ship ['m1']`
+    `+random shipname` <<Hidden
+    `+random team ['size']`
+    `+random channelteam ['size']`
+    `+random onlineteam ['size']`
+    `+random 8ball`
+    `+random cat`
+    `+random emoji`
+    `+random kaomoji` <<For Emzilla
+    `+random lewd`
+    `+random puffu` <<Hidden
+    `+random smash`
+    `+random strat`
+    `+random weapon`
+    `+random privatematch`
+    `+random face` <<Hidden
+    `+random colour` <<Hidden
+    `+random encouragement` <<By Leonie
+    `+random happysong` <<By Leonie
+    `+random honk` <<By xgchen
+    `+random squiddy` <<By Frawst and Toby
+    """
+    #random coin
+    coin_heads_up = ""
+    coin_tails_up = ""
+    coin_on_side = ""
+    # {0}     : ^ one of these
+    coin_response = ""
+    
+    #random shipname
+    shipname_failed = ""
+    
+    #random team
+    team_not_enough_people = ""
+    
+class Remove:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    -- user
+    `+remove me 'limit'` posts `+archive`
+    -- server mod
+    `+remove user '@username' ['@username' [...]] ['limit']`
+    `+remove embeds ['limit']`
+    `+remove contains 'content' ['limit']`
+    `+remove command 'calls' ['limit']`
+    `+remove all ['limit']`
+    """
+    no_arguement = ""
+    invalid_arghement = ""
+    #THIS SHOULD PIN THE ENTIRE BLAME ON B1NZY
+    limit_too_high = ""
+    no_logsfrom_permission = "'Read Message History'"
+    no_delete_permission = "'Manage Messages'"
+    # {0}     : Deleted message count
+    remove_success = ""
+    
+    #remove user
+    #this message waits for "continue"
+    # {0}     : the (> 1) number of users to delete
+    user_multi_request = ""
+    user_nulti_timeout = ""
+    
+    #remove contains
+    contains_no_query = ""
+    contains_query_too_small = "" #min 3 letters
+    
+    #remove command
+    command_no_query = ""
+    
+class Cleanup:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+cleanup ['limit']`
+    """
+    #uses things in remove...
+    
+class Schedule:
+    shorthelp = ""
+    longhelp = ""
+    """
+    This command is only available in english
+    """
+    
+class Tag:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    -- user
+    `+tag 'tagname'`
+    `+tag create 'tagname' 'content'`
+    `+tag edit 'tagname' 'new content'`
+    `+tag rename 'tagname' 'new name'`
+    `+tag delete 'tagname'`
+    `+tag delete all`
+    `+tag clone 'tagname' 'server' ['new name']`
+    `+tag gift 'tagname' 'new owner'`
+    `+tag owner 'tagname'`
+    `+tag list ['username']`
+    `+tag list all`
+    `+tag nsfw 'tagname'`
+    `+tag random`
+    `+tag search 'query'`
+    `+tag claim 'tagname'`
+    `+tag export`
+    `+tag import` <<Upload
+    `+tag eval 'content' ['args']`
+    -- bot admin
+    `+tag nsfw all`
+    """
+    no_arguement = ""
+    cannot_modify_someone_elses_tag = ""
+    modify_tag_welcome = "'Server Manager'"
+    orphan_name = "Someone"
+    
+    #tag post
+    # {0}     : The query
+    post_tag_not_found = ""
+    
+    #tag create
+    create_not_enough_args = ""
+    create_reserver_name = ""
+    create_everyone_shame = ""
+    create_tag_exists = ""
+    #accepts any message or "abort"
+    # {0}     : Tagname
+    create_content_request = ""
+    create_content_timeout = ""
+    # {0}     : Tagname
+    create_success = ""
+    create_too_many_args_warning = ""
+    
+    
+    tagname_exists_error = ""
+    content_mentions_everyone_error = ""
+    
+    #tag edit
+    edit_no_args = ""
+    #this is appended with an error message
+    edit_error = "error occured: "
+    edit_success = ""
+    
+    #tag rename
+    rename_no_args = ""
+    rename_reserved_name = ""
+    rename_non_existant_tag = ""
+    #this is appended with an error message
+    rename_error = "error occured: "
+    rename_success = ""
+    
+    #tag delete
+    delete_no_args = ""
+    delete_not_found = ""
+    delete_success = ""
+    delete_all_no_tags = ""
+    #this waits for "confirm"
+    # {0}     : Number of tags to delete
+    delete_all_request = ""
+    delete_all_timeout = ""
+    # {0}     : Number of tags deleted
+    delete_all_success = ""
+    
+    #tag clone
+    clone_no_args = ""
+    clone_tag_not_found = ""
+    clone_server_not_found = ""
+    clone_caller_not_on_server = ""
+    clone_dest_tag_exists = ""
+    clone_server_disabled_tags = ""
+    # {0}     : Tag name
+    # {1}     : Dest server
+    clone_success = ""
+    
+    #tag gift
+    gift_no_args = ""
+    gift_tag_not_found = ""
+    gift_target_not_found = ""
+    #the bot listens for "+accept {1}"
+    # {0}     : Target name
+    # {1}     : Tagname
+    gift_request = ""
+    gift_timeout = ""
+    gift_success = ""
+    
+    #tag owner
+    owner_no_args = ""
+    owner_tag_not_found = ""
+    # {0}     : Tag name
+    owner_left = "Use `+tag claim {0}`"
+    # {0}     : Owner name
+    owner_found = ""
+    
+    #tag list
+    list_target_not_found = ""
+    # {0}     : Server name
+    # {1}     : Tag list (format "`, `".join)
+    list_server_element = ""
+    list_msg_too_long = ""
+    list_all_orphan_name = "Orphaned"
+    
+    #tag nsfw
+    nsfw_no_args = ""
+    nsfw_tag_not_found = ""
+    nsfw_changed_to_true = ""
+    nsfw_changed_to_false = ""
+    #this listens for "continue"
+    # {0}     : Tag count
+    nsfw_all_request = ""
+    nsfw_all_timeout = ""
+    nsfw_all_success = ""
+    
+    #tag random
+    random_no_sfw_tags = ""
+    # {0}     : Owner name
+    # {1}     : Tag name
+    # {2}     : Tag content
+    random_returned = ""
+    
+    #tag search
+    search_no_query = ""
+    search_query_too_short = "" #min 3
+    search_no_results = ""
+    # {0}     : Owner name
+    # {1}     : Tag name
+    # {2}     : Tag content
+    search_one_result = ""
+    # {0}     : Tag count
+    # {1}     : Tag list (format ", ".join)
+    search_multiple_results = ""
+    
+    #tag claim
+    claim_no_arg = ""
+    claim_tag_not_found = ""
+    # {0}     : Owner name
+    claim_already_owned = ""
+    claim_success = ""
+    
+    #tag export
+    export_no_tags = ""
+    # {0}     : Tag count
+    # {1}     : Tag list
+    export_overview = ""
+    export_overview_count_only = ""
+    
+    #tag import
+    import_no_attachment =""
+    import_fetch_error = ""
+    import_fetch_timeout = ""
+    import_file_corruption = ""
+    #bot listens for "++nsfw"
+    import_nsfw_request = ""
+    # {0}     : Success count
+    # {1}     : Total attempts
+    # {2}     : Failed count
+    # {3}     : Failed list
+    # {4}     : Success list
+    import_success = ""
+    import_success_no_success_list = ""
+    import_success_no_tag_list = ""
+    
+    #tag eval
+    #plug http://fennekid.github.io here
+    eval_no_args = ""
+    reply_too_long = ""
+    
+class Toggle:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+toggle list`
+    `+toggle 'command set'`
+    `+toggle 'command name'`
+    `+toggle !`
+    """
+    no_arguements = ""
+    
+    #toggle list
+    list_no_disabled_commands = ""
+    list_header = ""
+    # {0}     : Category name
+    # {1}     : Command List
+    list_command_entry = ""
+    list_alt_calling_disabled = ""
+    
+    #toggle alt
+    alt_call_disabled = ""
+    alt_call_enabled = ""
+    
+    #toggle command
+    command_cannot_disable_bot = ""
+    command_disabled = ""
+    command_enabled = ""
+    
+    #toggle set
+    set_cannot_disable_bot = ""
+    set_command_or_set_not_found = ""
+    # {0}     : Count
+    # {1}     : Command list
+    set_disabled = ""
+    set_enabled = ""
+    
+class Welcome:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+welcome 'code'`
+    Availaboe codes:
+    1: Default message
+    2: Hug
+    3: PM owner
+    4: +tag welcome
+    5: Wait until sending
+    6: Wait & +tag welcome
+    0: No Action
+    Replacement markers:
+    {user}  : username
+    {@user} : usermention
+    {id}    : user id
+    """
+    welcome_types = [
+        "no action",
+        "welcome new users",
+        "send hugs",
+        "ping {0.owner.name}",
+        "use `+tag welcome`",
+        "wait until first message",
+        "tag on first message"
+    ]
+    
+    no_arguement = ""
+    # {0}     : Option from welcome_types
+    change_success = ""
+    
+    # {0}     : Member name
+    # {1}     : Server name
+    welcome_message = ""
+    # {0}     : Member name
+    welcome_hug = "Yay~! New member! Hi {0}! \\*hug*"
+    # {0}     : Member name
+    # {1}     : Server name
+    welcome_pm = ""
+    # {0}     : Member name
+    welcome_no_tag = ""
+    
+    no_permission_for_default_channel = "'Send Messages'"
+    
+class Misc:
+    #called 25% on table flip
+    table_unflip = "┬─┬ノ( º _ ºノ)"
+    
+    #called when quotes mismatch
+    quote_mismatching = ""
+    
+    #called on redtext error
+    bad_gateway_error_message = ""
