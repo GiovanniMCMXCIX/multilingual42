@@ -8,7 +8,7 @@ context for, but if there is any confusion, just ask
 squas about the context.
 
 Please put all command calls inside backticks and 
-inglude the + sign
+include the + sign
 
 Bad:  Use help tag for info
 Good: Use `+help tag` for info
@@ -55,6 +55,8 @@ class Help:
     command_not_found = ""
     
     #this is used when someone calls a command's longhelp
+    # {0}     : Command name
+    # {1}     : Command auth
     command_longhelp_header = ""
     
     #in the bots section, tutorial and botban have brief command descriptions
@@ -89,6 +91,7 @@ class Language:
     #ie, the part _after_ the command call ("makes me speak english")
     longhelp = ""
     
+    # {0}     : List of languages
     no_arguement = ""
     invalid_arguement = ""
     
