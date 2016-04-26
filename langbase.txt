@@ -248,8 +248,8 @@ class Remind:
     
     #this asks for "`+cancel`"
     # {0}      : The hours
-    # {1:0<2}  : The minutes
-    # {2:0<2}  : The seconds
+    # {1:0>2}  : The minutes
+    # {2:0>2}  : The seconds
     reminder_start = ""
 
 class Faq:
