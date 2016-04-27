@@ -1229,6 +1229,7 @@ class Avy:
     `+avy server`
     """
     no_user_found = ""
+    user_has_no_avatar = ""
     
 class Msgcount:
     shorthelp = ""
