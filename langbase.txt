@@ -397,7 +397,7 @@ class Tutorial:
     #The bot listens to ++help from here onwards
     header = ""
     #this is a long one. You can have up to 10 parts here
-    message trail = [
+    message_trail = [
         "The next upto 10 messages should briefly describe the features",
         "The current script contains: [1] +leave, +faq",
         "[2] Moderation: +colour, +ban",
