@@ -686,7 +686,18 @@ class Event:
         "JAN", "FEB", "MAR", "APR", "MAY", "JUN",
         "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"
     ]
+    # error messages
+    error_invalid_format = ""   #DD/MM, DD/MMM, MM/DD, MMM/DD
+    # {0}     : Month name
+    # {1}     : Days in that month
+    error_date_invalid = "day in 1 - {1}"
+    error_date_not_a_number = ""
+    error_invalid_date = ""
     date_read_error = "An error occured: " # + error message
+    date_discrepency_header = ""
+    #this asks for a number of the date to choose
+    date_discrepency_footer = ""
+    date_discrepency_timeout = ""
     
     #event next
     # {0}     : The number of days
