@@ -787,12 +787,14 @@ class Colour:
     # {0}     : User or Role name
     # {1}     : The colour of the role
     get_return_role = ""
+    #this may be removed and replaced with a file upload later on.
     get_message_too_long = ""
     
     #colour set
     set_not_enough_args = ""
     set_no_role_or_user = ""
     set_invalid_colour = ""
+    set_success = ""
     
 class Rps:
     shorthelp = ""
