@@ -1872,6 +1872,8 @@ class Welcome:
     4: +tag welcome
     5: Wait until sending
     6: Wait & +tag welcome
+    7: Give +giveme welcome
+    8: +giveme and +tag
     0: No Action
     Replacement markers:
     {user}  : username
@@ -1885,7 +1887,9 @@ class Welcome:
         "ping {0.owner.name}",
         "use `+tag welcome`",
         "wait until first message",
-        "tag on first message"
+        "tag on first message",
+        "give new user giveme welcome",
+        "giveme and tag"
     ]
     
     no_arguement = ""
@@ -1902,6 +1906,10 @@ class Welcome:
     welcome_pm = ""
     # {0}     : Member name
     welcome_no_tag = ""
+    
+    welcome_role_broken = ""
+    no_permission_for_roles = "'Manage Roles'"
+    no_welcome_role_set_up = ""
     
     no_permission_for_default_channel = "'Send Messages'"
     
