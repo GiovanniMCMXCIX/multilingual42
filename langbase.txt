@@ -1,4 +1,4 @@
-"""
+﻿"""
 This is the outputs file for 42
 please fill in each line for your language
 where a tag (e.g. {0}) is supplied, please use it.
@@ -73,7 +73,7 @@ class Categories:
     RNG = ""
     Games = ""
     Memory = ""
-    Pok�mon = ""
+    Pokémon = ""
     Splatoon = ""
     Mabinogi = ""
     Secret = ""
@@ -84,7 +84,7 @@ class Language:
     #in language, longhelp is wierd. it will post this message
     """
     `+language en` makes me speak english
-    `+language fr` fait parler en fran�ais moi
+    `+language fr` fait parler en français moi
     ...
     """
     #so for this, I only want you to add your own line to the message
@@ -1915,7 +1915,7 @@ class Welcome:
     
 class Misc:
     #called 25% on table flip
-    table_unflip = "┬─┬ノ( º _ ºノ)"
+    table_unflip = "nuu! leave the tables alone!" # + /unflip
     
     #called when quotes mismatch
     quote_mismatching = ""
