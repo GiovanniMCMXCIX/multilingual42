@@ -723,7 +723,7 @@ class Event:
     #event clear
     clear_not_enough_args = ""
     clear_no_events_on_day = ""
-    ckear_success = ""
+    clear_success = ""
     
     #event wipe
     #this command asks for "continue"
