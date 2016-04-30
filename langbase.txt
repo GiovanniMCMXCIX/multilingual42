@@ -580,8 +580,8 @@ class Giveme:
     clear_success = ""
     
     #giveme exclusive
-    # {0}     : New state (True/False)
-    exclusive_success = ""
+    exclusive_enabled = ""
+    exclusive_disabled = ""
     
     #giveme get
     get_private_channel_error = ""
