@@ -1088,10 +1088,8 @@ class Info:
     # {1}     : Server joined days ago
     user_joined = ""
     # {0}     : Joined score
+    # {1}     : Server member count
     user_joined_score = ""
-    # {0}     : Server member count
-    # {1}     : Server name
-    user_server_member_data = ""
     
     #info user > Member
     # {0}     : Game
