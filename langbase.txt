@@ -1913,6 +1913,23 @@ class Welcome:
     
     no_permission_for_default_channel = "'Send Messages'"
     
+class Rolestate:
+    shorthelp = ""
+    longhelp = ""
+    
+    #the bot listens for "confirm"
+    start_request = ""
+    start_timeout = ""
+    start_success = ""
+    
+    #the bot listens for "confirm"
+    #the bot **WARNS ABOUT DATA DELETION**
+    stop_request = ""
+    stop_timeout = ""
+    stop_success = ""
+    
+    no_permission = "Manage Roles"
+    
 class Misc:
     #called 25% on table flip
     table_unflip = "nuu! leave the tables alone!" # + /unflip
