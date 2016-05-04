@@ -1336,7 +1336,8 @@ class Ctrlf:
     longhelp = ""
     """
     Available commands:
-    `+ctrlf 'query'`
+    `+ctrlf 'query' '+00'`
+    where `+00` is the hours offset from UTC in the timestamp
     """
     no_arguement = ""
     query_too_short = "" #min length 4
@@ -1929,6 +1930,30 @@ class Rolestate:
     stop_success = ""
     
     no_permission = "Manage Roles"
+    
+class Raffle:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+raffle 'duration' ['min-entry' ['winners']] [np]`
+    np stands for "no penalty" for voting multiple times
+    """
+    raffle_exists = ""
+    no_args = ""
+    duration_out_or_range = "" #range 3 - 60 mins
+    too_many_winners = ""
+    #the bot alerts users to use "+enter"
+    #the bot listens for "+stop"
+    #the bot warns that +enter is silent
+    raffle_start = ""
+    not_enough_entered = ""
+    # {0}     : The ", " list of winners
+    raffle_results = ""
+    
+class Enter:
+    shorthelp = ""
+    longhelp = None
     
 class Misc:
     #called 25% on table flip
