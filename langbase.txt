@@ -660,8 +660,8 @@ class Brainfuck:
     output = ""
     
 class Shell:
-    shorthelp: ""
-    longhelp: "This command is only available in english."
+    shorthelp = ""
+    longhelp = "This command is only available in english."
     
 class Event:
     shorthelp = ""
