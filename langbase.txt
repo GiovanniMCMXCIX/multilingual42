@@ -1964,3 +1964,7 @@ class Misc:
     
     #called on redtext error
     bad_gateway_error_message = ""
+    
+    #called on name confusion
+    #the bot asks for a number
+    name_choice_footer = "Enter the number of the person you meant."
