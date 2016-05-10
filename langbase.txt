@@ -35,6 +35,8 @@ Lists: If a field has `field = [""]` in it, feel free to make
 that comma seperated list as long as you want.
 """
 
+TRANSLATORS = ""
+
 class Help:
     help_shorthelp = ""
     help_longhelp = ""
@@ -102,6 +104,16 @@ class Hello:
     shorthelp = ""
     longhelp = None
     message = ""
+    
+class About:
+    shorthelp = ""
+    longhelp = ""
+    # {0}     : Author name
+    # {1}     : Lib name
+    # {2}     : Lib version
+    # {3}     : Translator name(s)
+    header = ""
+    body = ""
     
 class Check:
     shorthelp = ""
