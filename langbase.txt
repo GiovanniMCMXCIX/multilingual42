@@ -852,8 +852,8 @@ class Evict:
     """
     no_arguements = ""
     no_target_found = ""
+    #Evicts now last an hour and is global
     target_evicted = ""
-    target_allowed = ""
     
 class Blackjack:
     shorthelp = ""
