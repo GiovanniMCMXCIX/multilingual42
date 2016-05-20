@@ -84,6 +84,7 @@ class Categories:
     Fun = ""
     Nerd = ""
     
+    Undefined = ""
 
 class Language:
     shorthelp = ""
@@ -441,6 +442,10 @@ class H5:
     message = "High Five| :hand::skin-tone-1:"
     
 class Ie:
+    shorthelp = ""
+    longhelp = None
+    
+class Co:
     shorthelp = ""
     longhelp = None
     
@@ -914,7 +919,7 @@ class Coins:
     ]
     get_add_ready_now = ""
     # {0:0>2}  : The hours
-    # {0:0>2}  : The minutes
+    # {1:0>2}  : The minutes
     get_add_ready_in = ""
     
     #coins add
@@ -1059,7 +1064,7 @@ class Gear:
     
 class Splatmeta:
     shorthelp = ""
-    longhelp = ""
+    longhelp = None
     """
     Available commands:
     `+splatmeta damage 'wpn' 'dmg' 'def'`
@@ -1067,7 +1072,14 @@ class Splatmeta:
     `+splatmeta damage 'wpn' ? 'def'`
     [Oh god, do I have to do this now? Can it just wait?]
     #TODO do this
+    right. this is not staying. the code is a fucking mess
+    i have no way to make it any better without massive amounts
+    of effort that i dont care enough to put in, so fuck it
+    im just gonna make splatmeta link that splatools app. its
+    better than splatmeta could ever be
+    rip
     """
+    explanation = ""
     
 class Info:
     shorthelp = ""
@@ -1985,3 +1997,4 @@ class Misc:
     #called on name confusion
     #the bot asks for a number
     name_choice_footer = "Enter the number of the person you meant."
+    name_choice_too_long = ""
