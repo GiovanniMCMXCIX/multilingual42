@@ -1356,6 +1356,7 @@ class Dex:
     `LV100` assumes 0EV, 0IV and a neutral nature
     This command is only available in english.
     """
+    # {0}     : The command name
     no_arguements = ""
     no_found_pokemon = ""
     
