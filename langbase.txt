@@ -59,6 +59,7 @@ class Help:
     #this is used when someone calls a command's longhelp
     # {0}     : Command name
     # {1}     : Command auth
+    # {2}     : Command rate
     command_longhelp_header = ""
     
     #in the bots section, tutorial and botban have brief command descriptions
