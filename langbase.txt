@@ -1301,42 +1301,7 @@ class Autopost:
     # {0}     : The number of messages
     autopost_start = ""
     autopost_stop = ""
-    
-class Alerts:
-    shorthelp = ""
-    longhelp = ""
-    """
-    Available commands:
-    `+alerts set 'streamname'`
-    `+alerts off`
-    `+alerts list`
-    `+alerts toggle 'linked username'`
-    """
-    no_arguements = ""
-    # {0}     : Streamer's name
-    stream_started = "<http://www.twitch.tv/{0}>"
-    
-    #alerts set
-    set_no_args = ""
-    set_passed_url = "" #42 only accepts usernames, not urls
-    #this is appended with the error message
-    set_error = "error occured: "
-    set_success = ""
-    
-    #alerts off
-    off_no_stream = ""
-    off_success = ""
-    
-    #alerts list
-    list_no_streams = ""
-    
-    #alerts toggle
-    toggle_no_args = ""
-    toggle_no_target = "" #42 listens for username, not stream name
-    toggle_target_has_no_stream = ""
-    toggle_stream_enabled = ""
-    toggle_stream_disabled = ""
-    
+        
 class Uplink:
     shorthelp = ""
     longhelp = ""
