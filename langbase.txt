@@ -1667,13 +1667,14 @@ class Tag:
     `+tag import` <<Upload
     `+tag clone 'tagname' 'server' ['new name']`
     `+tag pull 'tagname' 'server' ['new name']`
-    `+tag private 'tagname'`
+    `+tag restrict 'tagname'`
 
     `+tag eval 'content' ['args']`
     `+tag raw 'tagname'`
     `+tag debug 'tagname'`
     `+tag deval 'content' ['args']`
-    `+tag secret 'tagname'`
+    `+tag closed 'tagname'`
+    `+tag hidden 'tagname'`
 
     -- bot admin
     `+tag nsfw all`
@@ -1685,9 +1686,9 @@ class Tag:
     `+help taginfo` handles:
       gift, info, list, search, claim, nsfw all, welcome
     `+help tagmovement` handles:
-      import, export, clone, pull, private
+      import, export, clone, pull, restrict
     `+help tagna` handles:
-      eval, raw, debug, deval, secret
+      eval, raw, debug, deval, closed, hidden
     """
     no_arguement = ""
     cannot_modify_someone_elses_tag = ""
@@ -1755,7 +1756,7 @@ class Tag:
     clone_caller_not_on_server = ""
     clone_dest_tag_exists = ""
     clone_server_disabled_tags = ""
-    clone_private_tag = ""
+    clone_restricted_tag = ""
     # {0}     : Tag name
     # {1}     : Dest server
     clone_success = ""
@@ -1767,16 +1768,16 @@ class Tag:
     pull_tag_not_found = ""
     pull_dest_tag_exists = ""
     pull_server_disabled_tags = ""
-    pull_private_tag = ""
+    pull_restricted_tag = ""
     # {0}     : Tag name
     # {1}     : Src server
     pull_success = ""
     
-    #tag private
-    private_no_args = ""
-    private_tag_not_found = ""
-    private_changed_to_true = ""
-    private_changed_to_false = ""
+    #tag restrict
+    restrict_no_args = ""
+    restrict_tag_not_found = ""
+    restrict_changed_to_true = ""
+    restrict_changed_to_false = ""
     
     #tag gift
     gift_no_args = ""
@@ -1865,6 +1866,18 @@ class Tag:
     import_success_no_success_list = ""
     import_success_no_tag_list = ""
     
+    #tag hidden
+    hidden_no_args = ""
+    hidden_tag_not_found = ""
+    hidden_changed_to_true = ""
+    hidden_changed_to_false = ""
+    
+    #tag closed
+    closed_no_args = ""
+    closed_tag_not_found = ""
+    closed_changed_to_true = ""
+    closed_changed_to_false = ""
+    
     #tag eval
     #plug http://fennekid.github.io here
     eval_no_args = ""
@@ -1872,7 +1885,7 @@ class Tag:
     
     #tag raw
     raw_no_args = ""
-    raw_secret_tag = ""
+    raw_closed_tag = ""
     
 class Taginfo:
     shorthelp = ""
@@ -1903,7 +1916,7 @@ class Tagmovement:
     `+tag import` <<Upload
     `+tag clone 'tagname' 'server' ['new name']`
     `+tag pull 'tagname' 'server' ['new name']`
-    `+tag private 'tagname'`
+    `+tag restrict 'tagname'`
     """
 
 class Tagna:
@@ -1916,7 +1929,8 @@ class Tagna:
     `+tag raw 'tagname'`
     `+tag debug 'tagname'`
     `+tag deval 'content' ['args']`
-    `+tag secret 'tagname'`
+    `+tag closed 'tagname'`
+    `+tag hidden 'tagname'`
     """
     
 class Toggle:
