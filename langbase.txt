@@ -1597,7 +1597,7 @@ class Remove:
     `+remove all ['limit']`
     """
     no_arguement = ""
-    invalid_arghement = ""
+    invalid_arguement = ""
     no_logsfrom_permission = "'Read Message History'"
     # {0}     : Deleted message count
     remove_success = ""
