@@ -1590,9 +1590,6 @@ class Remove:
     longhelp = ""
     """
     Available commands:
-    -- user
-    `+remove me 'limit'` posts `+archive`
-    -- server mod
     `+remove user '@username' ['@username' [...]] ['limit']`
     `+remove embeds ['limit']`
     `+remove contains 'content' ['limit']`
@@ -1601,10 +1598,7 @@ class Remove:
     """
     no_arguement = ""
     invalid_arghement = ""
-    #THIS SHOULD PIN THE ENTIRE BLAME ON B1NZY
-    limit_too_high = ""
     no_logsfrom_permission = "'Read Message History'"
-    no_delete_permission = "'Manage Messages'"
     # {0}     : Deleted message count
     remove_success = ""
     
@@ -1620,6 +1614,15 @@ class Remove:
     
     #remove command
     command_no_query = ""
+    
+class Cleanme:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+cleanme 'limit'`
+    This posts a +archive
+    """
     
 class Cleanup:
     shorthelp = ""
