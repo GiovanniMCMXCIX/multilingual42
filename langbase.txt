@@ -1599,6 +1599,7 @@ class Remove:
     no_arguement = ""
     invalid_arguement = ""
     no_logsfrom_permission = "'Read Message History'"
+    no_delete_permission = "'Manage Messages'"
     # {0}     : Deleted message count
     remove_success = ""
     
