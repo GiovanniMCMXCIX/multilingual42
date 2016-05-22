@@ -1653,24 +1653,44 @@ class Tag:
     `+tag rename 'tagname' 'new name'`
     `+tag delete 'tagname'`
     `+tag delete all`
-    `+tag clone 'tagname' 'server' ['new name']`
-    `+tag gift 'tagname' 'new owner'`
-    `+tag owner 'tagname'`
-    `+tag list ['username']`
-    `+tag list all`
     `+tag nsfw 'tagname'`
     `+tag random`
+    
+    `+tag gift 'tagname' 'new owner'`
+    `+tag info 'tagname'`
+    `+tag list ['username']`
+    `+tag list all`
     `+tag search 'query'`
     `+tag claim 'tagname'`
+    
     `+tag export`
     `+tag import` <<Upload
+    `+tag clone 'tagname' 'server' ['new name']`
+    `+tag pull 'tagname' 'server' ['new name']`
+    `+tag private 'tagname'`
+
     `+tag eval 'content' ['args']`
+    `+tag raw 'tagname'`
+    `+tag debug 'tagname'`
+    `+tag deval 'content' ['args']`
+    `+tag secret 'tagname'`
+
     -- bot admin
     `+tag nsfw all`
+    
+    -- server admin
+    `+tag welcome 'content'
+    
+    -- Delegations:
+    `+help taginfo` handles:
+      gift, info, list, search, claim, nsfw all, welcome
+    `+help tagmovement` handles:
+      import, export, clone, pull, private
+    `+help tagna` handles:
+      eval, raw, debug, deval, secret
     """
     no_arguement = ""
     cannot_modify_someone_elses_tag = ""
-    modify_tag_welcome = "'Server Manager'"
     orphan_name = "Someone"
     
     #tag post
@@ -1679,7 +1699,7 @@ class Tag:
     
     #tag create
     create_not_enough_args = ""
-    create_reserver_name = ""
+    create_reserved_name = ""
     create_everyone_shame = ""
     create_tag_exists = ""
     #accepts any message or "abort"
@@ -1690,7 +1710,7 @@ class Tag:
     create_success = ""
     create_too_many_args_warning = ""
     
-    
+    #these are errors that modify_tag will throw
     tagname_exists_error = ""
     content_mentions_everyone_error = ""
     
@@ -1720,6 +1740,14 @@ class Tag:
     # {0}     : Number of tags deleted
     delete_all_success = ""
     
+    #tag welcome
+    welcome_no_perms = ""
+    #this is appended into welcome_no_args as {0}
+    welcome_not_set = ""
+    # {0}     : Current welcome
+    welcome_no_args = ""
+    welcome_success = ""
+    
     #tag clone
     clone_no_args = ""
     clone_tag_not_found = ""
@@ -1727,9 +1755,28 @@ class Tag:
     clone_caller_not_on_server = ""
     clone_dest_tag_exists = ""
     clone_server_disabled_tags = ""
+    clone_private_tag = ""
     # {0}     : Tag name
     # {1}     : Dest server
     clone_success = ""
+    
+    #tag pull
+    pull_no_args = ""
+    pull_server_not_found = ""
+    pull_caller_not_on_server = ""
+    pull_tag_not_found = ""
+    pull_dest_tag_exists = ""
+    pull_server_disabled_tags = ""
+    pull_private_tag = ""
+    # {0}     : Tag name
+    # {1}     : Src server
+    pull_success = ""
+    
+    #tag private
+    private_no_args = ""
+    private_tag_not_found = ""
+    private_changed_to_true = ""
+    private_changed_to_false = ""
     
     #tag gift
     gift_no_args = ""
@@ -1822,6 +1869,55 @@ class Tag:
     #plug http://fennekid.github.io here
     eval_no_args = ""
     reply_too_long = ""
+    
+    #tag raw
+    raw_no_args = ""
+    raw_secret_tag = ""
+    
+class Taginfo:
+    shorthelp = ""
+    longhelp = ""
+    """
+    This is a help shell to break down +tag
+    Available commands:
+    -- user
+    `+tag gift 'tagname' 'new owner'`
+    `+tag info 'tagname'`
+    `+tag list ['username']`
+    `+tag list all`
+    `+tag search 'query'`
+    `+tag claim 'tagname'`
+    -- bot admin
+    `+tag nsfw all`
+    -- server admin
+    `+tag welcome 'content'
+    """
+
+class Tagmovement:
+    shorthelp = ""
+    longhelp = ""
+    """
+    This is a help shell to break down +tag
+    Available commands:
+    `+tag export`
+    `+tag import` <<Upload
+    `+tag clone 'tagname' 'server' ['new name']`
+    `+tag pull 'tagname' 'server' ['new name']`
+    `+tag private 'tagname'`
+    """
+
+class Tagna:
+    shorthelp = ""
+    longhelp = ""
+    """
+    This is a help shell to break down +tag
+    Available commands:
+    `+tag eval 'content' ['args']`
+    `+tag raw 'tagname'`
+    `+tag debug 'tagname'`
+    `+tag deval 'content' ['args']`
+    `+tag secret 'tagname'`
+    """
     
 class Toggle:
     shorthelp = ""
