@@ -1477,20 +1477,29 @@ class Pokestats:
     no_found_pokemon = "I couldn't find the Pokémon you wanted..."
     
 class Matchup:
-    shorthelp = ""
-    longhelp = ""
+    shorthelp = "makes me get type matchup data on a type"
+    longhelp = "`+matchup 'type'`"
     """
     Available commands:
     `+matchup 'type'`
     This command is only available in english
     """
-    no_arguement = ""
-    no_found_type = ""
+    no_arguement = "You asked for matchup data, but didn't tell me which one. Use `+matchup 'type'`"
+    no_found_type = "I could not find a type with that name."
     
 class Profile:
-    shorthelp = ""
+    shorthelp = "lets me keep track of your online profile"
     # {fields} : the fields for 'field'
-    longhelp = ""
+    longhelp = ("`+profile [get ['username']]` gets yours or another user's profile\n"
+                "`+profile nnid 'nnid'` sets your NNID\n"
+                "`+profile alt 'nnid'` sets one of your up to 3 alt NNIDs\n"
+                "`+profile game 'game'` sets one of your up to 8 games\n"
+                "`+profile note 'note'` sets your custom message"
+                "`+profile 'field' 'data'` sets one of your up to 5 custom fields\n"
+                "Valid fields are: {fields}\n"
+                "`+profile clear 'field'` clears a field (or field item in game and alt)\n"
+                "`+profile delete` deletes your entire profile\n"
+                "`+profile make` makes a new profile from scratch")
     """
     Available commands:
     `+profile [get ['username']]`
@@ -1507,54 +1516,54 @@ class Profile:
     help_squas_is_idiot_msg = "Sorry for the old profiles, but i changed the command to `+help profile` and I can't be bothered to retrogen old profiles."
     
     #profile get
-    get_not_in_pm = ""
-    get_no_user_found = ""
-    get_target_no_profile = ""
+    get_not_in_pm = "I cannot get profiles in PM. please use `+profile` to get your own profile."
+    get_no_user_found = "I could not find that user..."
+    get_target_no_profile = "The person you want does not have a profile set up."
     # {0}     : Target name
-    get_header = ""
+    get_header = "Profile for {0}:"
     # {0}     : List of games
     get_games_list = "Catch them playing: {0}"
     
     #profile setter
-    setter_invalid_field = ""
-    setter_no_data = ""
+    setter_invalid_field = "There is not a field with that name..."
+    setter_no_data = "You asked me to set a profile field, but didn't tell me to what..."
     # - These will be appended to setter_error_occured
-    setter_too_many_alts = ""          #max 3
-    setter_too_many_games = ""         #max 8
-    setter_game_too_long = ""          #max 32 chars
-    setter_too_many_custom_fields = "" #max 5
-    setter_data_too_long = ""          #max 80 chars
+    setter_too_many_alts = "Alt NNID count too long. Max 3 alt NNIDs"
+    setter_too_many_games = "Game count too long. Max 8 games"
+    setter_game_too_long = "Game name too long. Max 32 characters"
+    setter_too_many_custom_fields = "Too many custom fields. Max 5"
+    setter_data_too_long = "Profile data too long. Max 80 characters"
     #this appends an error to the message
-    setter_error_occured = "Error occured: "
+    setter_error_occured = "I tried to set your field, but an error occured: "
     # {0}     : The field name
-    setter_success = ""    
+    setter_success = "I have set your profile {0}."
     
     #profile clearer
-    clearer_no_arguements = ""
-    clearer_invalid_field = ""
+    clearer_no_arguements = "You asked me to clear a part of your profile, but didn't tell me which. Use `+profile clear 'field'`"
+    clearer_invalid_field = "I could did not understand the field you want me to clear..."
     # - These will be appended to clearer_error_occured
-    clearer_no_alts = ""
-    clearer_alt_timeout = ""
-    clearer_no_games = ""
-    clearer_game_timeout = ""
-    clearer_no_field = ""
+    clearer_no_alts = "No alts to delete"
+    clearer_alt_timeout = "Clear alt request timed out"
+    clearer_no_games = "No games to delete"
+    clearer_game_timeout = "Clear game request timed out"
+    clearer_no_field = "Field not in profile"
     #this appends an error to the message
-    clearer_error_occured = "Error occured: "
+    clearer_error_occured = "I tried to clear your profile but an error occured: "
     #this command asks for an index number
-    clearer_alt_footer = ""
+    clearer_alt_footer = "Please enter the number of the alt to delete."
     #this command asks for a number or "all"
-    clearer_game_footer = ""
+    clearer_game_footer = "Please enter the number of the game to delete."
     # {0}     : The field name
-    clearer_success = ""
+    clearer_success = "I have cleared your profile {0}."
     
     #profile delete
     #this asks for "confirm"
-    delete_request = ""
-    delete_request_timeput = ""
-    delete_success = ""
+    delete_request = "Are you sure you want to delete your entire profile. Type `confirm`"
+    delete_request_timeput = "Profile delete request timed out."
+    delete_success = "I have deleted your profile."
     
     #profile make
-    make_not_in_pm = ""
+    make_not_in_pm = "Since profile make takes a long time to execute, I have decided to limit it to PM only"
     """
     oh boy. this is gonna be fun
     The order of commands:
@@ -1564,71 +1573,84 @@ class Profile:
     then a note
     but at any time, the user can do `+skip`
     """
-    make_trigger_skip = ""
+    make_trigger_skip = "Alright then. Moving on."
     #the bot listens for an input or "+skip"
-    make_nnid_request = ""
-    make_nnid_timeout = ""
+    make_nnid_request = "Firstly, lets hear your NNID or type `+skip` to move on."
+    make_nnid_timeout = "Unfortunately, I can't wait forever so I will end the process here. Use `+help profile` for info on what you can do."
     #the bot listens for a ; seperated input or "+skip"
-    make_games_request = ""
-    make_games_timeout = ""
-    make_games_truncate_game_count = "" #user has > 8 games
-    make_games_truncate_game_name = "" #user game > 32 chrs
+    make_games_request = "Next, lets here what you play or type `+skip` to move on. To input multiple games, use a `;` seperated list (e.g. \"Not a Hero;Half Life 3;Pacman CEDX\""
+    make_games_timeout = "Unfortunately, I can't wait forever so I will end the process here. Use `+help profile` for info on what you can do."
+    make_games_truncate_game_count = "Since a profile can only have 8 games, I will just use the first 8 on the list." #user has > 8 games
+    make_games_truncate_game_name = "Since a profile game can only be 32 characters long, I will just truncate the ones that are longer." #user game > 32 chrs
     #the bot listens for a valid field name or "+skip"
     # {0}     : Number of remaining fields
     # {1}     : List of valid fields
-    make_field_request = ""
-    make_field_timeout = ""
+    make_field_request = "You can add {0} more field(s) or use `+skip` to move on"
+    make_field_timeout = "Its been a while. You must have nothing else to say. You can use `+help profile` to see how to update your profile"
     #the bot listens for a value
     # {0}     : Field name
-    make_field_data_request = ""
-    make_field_data_timeout = ""
-    make_field_data_too_long = "" #max 80 characters. req is skipped, not truncated
+    make_field_data_request = "And what is your {0}?"
+    make_field_data_timeout = "I can't wait forever unfortunately, so I'm gonna stop here. Use `+help profile` for details about what you can add."
+    make_field_data_too_long = "Unfortunately a field can only have 80 characters in it, so I cannot save this." #max 80 characters. req is skipped, not truncated
     #the bot listens for a value or "+skip"
-    make_note_request = ""
-    make_note_timeout = ""
-    make_note_skipped = ""
-    make_note_too_long = "" #max 80 chars
-    make_success = ""
+    make_note_request = "Lastly is there anything you want to say to the world?"
+    make_note_timeout = "I guess not. You can use `+help profile` to find out what you can do and `+profile note 'note'` to set your note."
+    make_note_skipped = "I guess not. You can change it later with `+profile note 'note'` when you change your mind."
+    make_note_too_long = "I can't make it more than 80 characters long unfortunately. You can set it again with `+profile note 'note'`" #max 80 chars
+    make_success = "I have made your profile. Thanks for taking the time out to make one ^-^"
     
 class Choose:
-    shorthelp = ""
-    longhelp = ""
+    shorthelp = "makes me pick from a list of options"
+    longhelp = "`+choose 'optn1' 'optn2' [...]`"
     """
     Available commands:
     `+choose 'optn1' 'optn2' [...]`
     """
-    no_choices = ""
-    only_1_choice = ""
-    outcomes_the_same = ""
+    no_choices = "You asked me to make a choice, but between what?"
+    only_1_choice = "I cannot choose from one thing though...."
+    outcomes_the_same = "The choice doesn't matter if the outcome is always the same..."
     
 class Dice:
-    shorthelp = ""
-    longhelp = ""
+    shorthelp = "gives me some dice to roll for you"
+    longhelp = "`+dice 'nDf' ['nDf' ...]`\nThe dice should be in D&D format where n is the (optional) number and f is the faces (e.g 2D6, 5D4 or D20)"
     """
     Available commands:
     `+dice 'nDf' ['nDf' ...]`
     """
-    no_dice = ""
-    too_many_dice_groups = "" #max 6
-    invalid_dice = ""
+    no_dice = "You asked me to roll some dice, but didn't give me any to roll. Use `+dice 'nDf' [...]`"
+    too_many_dice_groups = "Unfortunately I can only roll 6 sets of dice at a time." #max 6
+    invalid_dice = "Some of the dice you gave me were deformed. Dice should be formatted as nDf where n is optional number and f is faces."
     # {0}     : Number of faces
-    faces_out_of_range = "" #between 1 - 100
-    too_many_dice = "" #max 50
-    results_header = ""
+    faces_out_of_range = "Don't you think a {0} sided die is a bit silly, try something between 1 and 100." #between 1 - 100
+    too_many_dice = "I can't carry that many dice. Try sets no bigger than 50." #max 50
+    results_header = "I rolled those dice for you and got:"
     # {0}     : Dice count
     # {1}     : Dice Faces
     # {2}     : List of results (fmt: [1, 2, 3])
     # {3}     : Total
-    results_line = ""
+    results_line = "**{0}D{1}**: {2} totaling **{3}**"
     # {0}     : Counter (fmt {1:10, 2:3, 5:11})
-    results_counting_footer = ""
+    results_counting_footer = "I also counted the dice for you: {0}"
     # {0}     : Total
-    results_tallying_footer = ""
-    msg_char_limit_hit = ""
+    results_tallying_footer = "The total of all the dice is {0}"
+    msg_char_limit_hit = "I tried to post those dice, but Discord has a thing where I cant post a message that long..."
     
 class Random:
     shorthelp = ""
-    longhelp = ""
+    longhelp = ("`+random 'subcommand'` chosen from below\n"
+                "```xl\nAvailable Subcommands\n"
+                "number ['max'] lenny\n"
+                "coin           tag\n"
+                "ship ['m1']    team ['size']\n"
+                "channelteam    onlineteam\n"
+                "8ball          cat\n"
+                "emoji          privatematch\n"
+                "lewd           smash\n"
+                "strat          weapon\n"  
+                "For Emzilla: kaomoji\n"
+                "By Xgm: honk\n"
+                "By Leonie: encouragement happysong\n"
+                "By Frawst And Toby: squiddy```")
     """
     Available commands:
     `+random number ['max']`
@@ -1659,38 +1681,36 @@ class Random:
     `+random squiddy` <<By Frawst and Toby
     """
     #random coin
-    coin_heads_up = ""
-    coin_tails_up = ""
-    coin_on_side = ""
+    coin_heads_up = "Heads side up"
+    coin_tails_up = "Tails side up"
+    coin_on_side = "On its side"
     # {0}     : ^ one of these
-    coin_response = ""
+    coin_response = "I flipped a coin and it landed _**{0}**_"
     
     #random shipname
-    shipname_failed = ""
+    shipname_failed = "I tried to make a shipname, but I couldn't."
     
     #random team
-    team_not_enough_people = ""
+    team_not_enough_people = "There are not enough ppl to make a team."
     
 class Remove:
-    shorthelp = ""
-    longhelp = ""
+    shorthelp = "makes me delete messages from chat"
+    longhelp = ("`+remove user 'member' [['member' ...] 'limit']` deletes conversations. Limit is required for multi user delete\n"
+                "`+remove embeds ['limit']` deletes images and links\n"
+                "`+remove contains 'content' ['limit']` deletes keywords\n"
+                "`+remove command 'calls' ['limit']` deletes commands. Calls is a space seperated list (`? ~ pls`)\n"
+                "`+remove all 'limit'` for when you want to forget.")
     """
     Available commands:
-    -- user
-    `+remove me 'limit'` posts `+archive`
-    -- server mod
     `+remove user '@username' ['@username' [...]] ['limit']`
     `+remove embeds ['limit']`
     `+remove contains 'content' ['limit']`
     `+remove command 'calls' ['limit']`
     `+remove all ['limit']`
     """
-    no_arguement = ""
-    invalid_arghement = ""
-    #THIS SHOULD PIN THE ENTIRE BLAME ON B1NZY
-    limit_too_high = ""
-    no_logsfrom_permission = "I need Read Message History to fetch the logs..."
-    no_delete_permission = "'Manage Messages'"
+    no_arguement = "You asked me to remove something, but didn't tell me what. Use `+help remove`"
+    invalid_arguement = ""
+    no_logsfrom_permission = "'Read Message History'"
     # {0}     : Deleted message count
     remove_success = ""
     
@@ -1706,6 +1726,15 @@ class Remove:
     
     #remove command
     command_no_query = ""
+    
+class Cleanme:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+cleanme 'limit'`
+    This posts a +archive
+    """
     
 class Cleanup:
     shorthelp = ""
