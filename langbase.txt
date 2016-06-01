@@ -566,6 +566,9 @@ class Softban:
     command_success = ""
     no_permission = "'Ban Members'"
 
+#  This is going to change soon. I dont quite know to what, but we'll sort it out as we get there
+#  Commands will be `+giveme`, `+giveyou` and `+giverole` (which is the management one)    
+#  FIXME: this'll add a marker to spyder :3
 class Giveme:
     shorthelp = ""
     longhelp = ""
@@ -1717,6 +1720,7 @@ class Tag:
     
     #tag edit
     edit_no_args = ""
+    edit_not_found = ""
     #this is appended with an error message
     edit_error = "error occured: "
     edit_success = ""
@@ -1727,6 +1731,7 @@ class Tag:
     rename_non_existant_tag = ""
     #this is appended with an error message
     rename_error = "error occured: "
+    # {0}     : New tagname
     rename_success = ""
     
     #tag delete
@@ -1790,13 +1795,23 @@ class Tag:
     gift_timeout = ""
     gift_success = ""
     
-    #tag owner
-    owner_no_args = ""
-    owner_tag_not_found = ""
+    #tag info
+    info_no_args = ""
+    info_tag_not_found = ""
     # {0}     : Tag name
-    owner_left = "Use `+tag claim {0}`"
+    info_header = ""
     # {0}     : Owner name
-    owner_found = ""
+    info_owner = ""
+    # {0}     : Tag name
+    info_owner_left = "Use `+tag claim {0}`"
+    # {0}     : Tag uses
+    info_total_uses = ""
+    # {0}     : Total duplicates (>= 2)
+    info_duplicates = ""
+    info_is_nsfw = ""
+    info_is_restricted = ""
+    info_is_closed_source = ""
+    info_is_deleting = ""
     
     #tag list
     list_target_not_found = ""
@@ -1975,46 +1990,80 @@ class Welcome:
     longhelp = ""
     """
     Available commands:
-    `+welcome 'code'`
-    Availaboe codes:
-    1: Default message
-    2: Hug
-    3: PM owner
-    4: +tag welcome
-    5: Wait until sending
-    6: Wait & +tag welcome
-    7: Give +giveme welcome
-    8: +giveme and +tag
-    0: No Action
-    Replacement markers:
+    `+welcome 'type' 'code'`
+    
+    Availaboe types:
+    `dest`    the place to send to
+        `server`  to server.default_channel
+        `here`    to message.channel
+        `owner`   to server.owner PM
+        `new`     to new member PM
+    `message` the message to send
+        `none`    disables sending
+        `basic`   generic message
+        `hug`     friendly message
+        `tag`     use tag welcome
+    `roles`   the giveme to assign
+        `giveme`  to start giving roles
+        `none`    to stop giving roles
+    `wait`    the time to post a message
+        `instant` posts on join
+        `typing`  posts on first typing
+        `message` posts on first message
+    
+    Tag replacement markers:
     {user}  : username
     {@user} : usermention
     {id}    : user id
     """
-    welcome_types = [
-        "no action",
-        "welcome new users",
-        "send hugs",
-        "ping {0.owner.name}",
-        "use `+tag welcome`",
-        "wait until first message",
-        "tag on first message",
-        "give new user giveme welcome",
-        "giveme and tag"
-    ]
+    welcome_types = {
+        "message": {
+            "none": "",
+            "basic": "",
+            "hug": "",
+            "tag": ""
+        },
+        "dest": {
+            "server": "",
+            "here": "",
+            # {0}     : Owner name
+            "owner": "",
+            "new": ""
+        },
+        "roles": {
+            "giveme": "",
+            "none": ""
+        },
+        "wait": {
+            "instant": "",
+            "typing": "",
+            "message": ""
+        }
+    }
     
     no_arguement = ""
-    # {0}     : Option from welcome_types
+    # {0}     : Type 
+    # {1}     : Message from dict
     change_success = ""
     
+    #messages to the server
     # {0}     : Member name
     # {1}     : Server name
-    welcome_message = ""
+    server_welcome_message = ""
+    server_wait_on_message = "By the way, {0} is a new user."
     # {0}     : Member name
-    welcome_hug = "Yay~! New member! Hi {0}! \\*hug*"
+    server_welcome_hug = "Yay~! New member! Hi {0}! \\*hug*"
+    
+    #messages sent to owner
     # {0}     : Member name
     # {1}     : Server name
-    welcome_pm = ""
+    owner_welcome_message = ""
+    owner_welcome_hug = "Um... {0} just joined {1}. Good luck \\*hug*"
+    
+    #messages sent to user
+    user_welcome_message = ""
+    user_welcome_hug = "Welcome to our server \\*hug*"
+    
     # {0}     : Member name
     welcome_no_tag = ""
     
