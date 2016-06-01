@@ -1709,27 +1709,28 @@ class Remove:
     `+remove all ['limit']`
     """
     no_arguement = "You asked me to remove something, but didn't tell me what. Use `+help remove`"
-    invalid_arguement = ""
-    no_logsfrom_permission = "'Read Message History'"
+    invalid_arguement = "I do not know what I am supposed to remove. Use `+help command`"
+    no_logsfrom_permission = "I require the Read Message History permission to use this command."
+    no_delete_permission = "I require the Manage Messages permission to delete messages."
     # {0}     : Deleted message count
-    remove_success = ""
+    remove_success = "I have deleted {0} messages."
     
     #remove user
     #this message waits for "continue"
     # {0}     : the (> 1) number of users to delete
-    user_multi_request = ""
-    user_nulti_timeout = ""
+    user_multi_request = "You are about to delete messages from {0} users. Type `continue` to confirm."
+    user_nulti_timeout = "Remove conversation timeout."
     
     #remove contains
-    contains_no_query = ""
-    contains_query_too_small = "" #min 3 letters
+    contains_no_query = "You asked me to remove specific words, but didn't tell me which."
+    contains_query_too_small = "I don't want to hit too many messages, so queries need to be 3 letters long." #min 3 letters
     
     #remove command
-    command_no_query = ""
+    command_no_query = "You asked me to delete command calls, but didn't tell me which one. Use a space seperated list of calls (e.g. `~ ? pls`)"
     
 class Cleanme:
-    shorthelp = ""
-    longhelp = ""
+    shorthelp = "archives and deletes your own messages"
+    longhelp = "`+cleanme ['limit']`\nThis creates an archive, so no using it to hide from the mods ;)"
     """
     Available commands:
     `+cleanme 'limit'`
@@ -1737,8 +1738,8 @@ class Cleanme:
     """
     
 class Cleanup:
-    shorthelp = ""
-    longhelp = ""
+    shorthelp = "removes my own messages and if possible my command calls too."
+    longhelp = "`+cleanup ['limit']`"
     """
     Available commands:
     `+cleanup ['limit']`
@@ -1746,15 +1747,25 @@ class Cleanup:
     #uses things in remove...
     
 class Schedule:
-    shorthelp = ""
-    longhelp = ""
+    shorthelp = "makes me pull a copy of the splatoon schedule"
+    longhelp = "This command is only available in english."
     """
     This command is only available in english
     """
     
 class Tag:
-    shorthelp = ""
-    longhelp = ""
+    shorthelp = "lets me store and recall messages, image links or custom scripts."
+    longhelp = ("`+tag 'tagname'` recalls a tag\n"
+                "`+tag create 'tagname' 'content'` makes a new tag\n"
+                "`+tag edit 'tagname' 'new content'` edits a tag\n"
+                "`+tag rename 'tagname' 'new name'` renames a tag\n"
+                "`+tag delete 'tagname'` deletes a specific tag\n"
+                "`+tag delete all` deletes _all_ of your tags\n"
+                "`+tag nsfw 'tagname'` makes a tag not show up in `+tag random`\n"
+                "`+tag random` pulls a random tag.\n"
+                "`+help taginfo` gets help on owner related commands\n"
+                "`+help tagmovement` gets help on server related commands\n"
+                "`+help tagna` gets help on scripting related commands")
     """
     Available commands:
     -- user
@@ -1764,179 +1775,323 @@ class Tag:
     `+tag rename 'tagname' 'new name'`
     `+tag delete 'tagname'`
     `+tag delete all`
-    `+tag clone 'tagname' 'server' ['new name']`
-    `+tag gift 'tagname' 'new owner'`
-    `+tag owner 'tagname'`
-    `+tag list ['username']`
-    `+tag list all`
     `+tag nsfw 'tagname'`
     `+tag random`
+    
+    `+tag gift 'tagname' 'new owner'`
+    `+tag info 'tagname'`
+    `+tag list ['username']`
+    `+tag list all`
     `+tag search 'query'`
     `+tag claim 'tagname'`
+    
     `+tag export`
     `+tag import` <<Upload
+    `+tag clone 'tagname' 'server' ['new name']`
+    `+tag pull 'tagname' 'server' ['new name']`
+    `+tag restrict 'tagname'`
+
     `+tag eval 'content' ['args']`
+    `+tag raw 'tagname'`
+    `+tag debug 'tagname'`
+    `+tag deval 'content' ['args']`
+    `+tag closed 'tagname'`
+    `+tag hidden 'tagname'`
+
     -- bot admin
     `+tag nsfw all`
+    
+    -- server admin
+    `+tag welcome 'content'
+    
+    -- Delegations:
+    `+help taginfo` handles:
+      gift, info, list, search, claim, nsfw all, welcome
+    `+help tagmovement` handles:
+      import, export, clone, pull, restrict
+    `+help tagna` handles:
+      eval, raw, debug, deval, closed, hidden
     """
-    no_arguement = ""
-    cannot_modify_someone_elses_tag = ""
-    modify_tag_welcome = "'Server Manager'"
+    no_arguement = "You asked me about tags, but didn't tell me what to do. Use `+help tag`"
+    cannot_modify_someone_elses_tag = "I'm afraid I cannot allow you to tamper with a tag that does not belong to you."
     orphan_name = "Someone"
     
     #tag post
     # {0}     : The query
-    post_tag_not_found = ""
+    post_tag_not_found = "I cannot find a tag called '{0}'"
     
     #tag create
-    create_not_enough_args = ""
-    create_reserver_name = ""
-    create_everyone_shame = ""
-    create_tag_exists = ""
+    create_not_enough_args = "You asked me to create a tag, but didn't tell me what to make. USe `+tag create 'name' 'content'`"
+    create_reserved_name = "I cannot create a tag with a reserved name."
+    create_everyone_shame = "I cannot create a tag that contains @\u200beveryone or @\u200bhere ~~and you should be ashamed for trying.~~"
+    create_tag_exists = "The tag name you gave me already exists."
     #accepts any message or "abort"
     # {0}     : Tagname
-    create_content_request = ""
-    create_content_timeout = ""
+    create_content_request = "You asked to create a tag called '{0)' but didn't tell me what to put in it, so I will add your next message, or type `abort` to cancle"
+    create_content_timeout = "Tag create timed out."
     # {0}     : Tagname
-    create_success = ""
-    create_too_many_args_warning = ""
+    create_success = "I have created tag {0}."
+    create_too_many_args_warning = "You may want to check your tag since you gave me more than 4 parts..."
     
-    
-    tagname_exists_error = ""
-    content_mentions_everyone_error = ""
+    #these are errors that modify_tag will throw
+    tagname_exists_error = "Tagname already in use"
+    content_mentions_everyone_error = "Tag cannot mention everyone or here"
     
     #tag edit
-    edit_no_args = ""
+    edit_no_args = "You asked me to edit a tag, but didn't tell me which one. Use `+tag edit 'tagname' 'content'"
+    edit_not_found = "I cannot find a tag with that name..."
     #this is appended with an error message
-    edit_error = "error occured: "
-    edit_success = ""
+    edit_error = "I tried to edit your tag, but something went wrong: "
+    edit_success = "I have edited that tag."
     
     #tag rename
-    rename_no_args = ""
-    rename_reserved_name = ""
-    rename_non_existant_tag = ""
+    rename_no_args = "You asked me to rename a tag, but didn't tell me which. Use `+tag rename 'tagname' 'newname'`"
+    rename_reserved_name = "I cannot name a tag one ofthe reserved names..."
+    rename_non_existant_tag = "I cannot find a tag with that name..."
     #this is appended with an error message
-    rename_error = "error occured: "
-    rename_success = ""
+    rename_error = "I tried to rename that tag but something went wrong: "
+    # {0}     : New tagname
+    rename_success = "I have changed that tags name to '{0}'"
     
     #tag delete
-    delete_no_args = ""
-    delete_not_found = ""
-    delete_success = ""
-    delete_all_no_tags = ""
+    delete_no_args = "You asked me to delete a tag, but didn't tell me which one. Use `+tag delete 'tagname'`"
+    delete_not_found = "I couldn't find a tag with that name."
+    delete_success = "I have deleted that tag."
+    delete_all_no_tags = "You do not have any tags to delete..."
     #this waits for "confirm"
     # {0}     : Number of tags to delete
-    delete_all_request = ""
-    delete_all_timeout = ""
+    delete_all_request = "You are about to delete {0} tags. Type `confirm` to continue."
+    delete_all_timeout = "Tag delete all request timed out"
     # {0}     : Number of tags deleted
-    delete_all_success = ""
+    delete_all_success = "I have deleted {0} tags."
+    
+    #tag welcome
+    welcome_no_perms = "You must be a server manager to use this command."
+    #this is appended into welcome_no_args as {0}
+    welcome_not_set = "Nothing"
+    # {0}     : Current welcome
+    welcome_no_args = "The current welcome message is \"{0}\". To change it. Use `+tag welcome 'new contents'`"
+    welcome_success = "I have changed the server's welcome tag"
     
     #tag clone
-    clone_no_args = ""
-    clone_tag_not_found = ""
-    clone_server_not_found = ""
-    clone_caller_not_on_server = ""
-    clone_dest_tag_exists = ""
-    clone_server_disabled_tags = ""
+    clone_no_args = "You asked me to clone a tag, but didn't tell me to where. Use `+tag clone 'tagname' 'server' ['newname']`"
+    clone_tag_not_found = "I couldn't find a tag with that name..."
+    clone_server_not_found = "I couldn't find the target server..."
+    clone_caller_not_on_server = "I cannot clone to that server because you are not a member on it..."
+    clone_dest_tag_exists = "I cannot clone to that server because they already have a tag with that name. USe `+tag clone 'tagname' 'server' 'newname'`"
+    clone_server_disabled_tags = "I cannot clone to that server because they have disabled the tag command."
+    clone_restricted_tag = "I cannot clone this tag because it has been protected by its owner. Ask them to use `+tag restrict` to remove the protection."
     # {0}     : Tag name
     # {1}     : Dest server
-    clone_success = ""
+    clone_success = "I have cloned tag {0} onto {1}."
+    
+    #tag pull
+    pull_no_args = "You asked me to pull a tag from another server, but didn't tell me which one. Use `+tag pull 'tagname' 'server' ['newname']"
+    pull_server_not_found = "I cannot find the target server..."
+    pull_caller_not_on_server = "I cannot pull any tags from that server because you are not on them."
+    pull_tag_not_found = "I cannot find a tag on the other server with that name"
+    pull_dest_tag_exists = "There is already a tag on this server with that name. Use `+tag pull 'tagname' 'server' 'newname'`"
+    pull_server_disabled_tags = "I cannot pull from that server since they disabled tags..."
+    pull_restricted_tag = "I cannot pull that tag because the owner has protected it. Ask them to do `+tag restrict` to take off the protection."
+    # {0}     : Tag name
+    # {1}     : Src server
+    pull_success = "I have pulled tag {0} from {1}"
+    
+    #tag restrict
+    restrict_no_args = "You asked me to protect a tag from clone and pull, but didn't tell me which. Use `+tag restrict 'tagname'`"
+    restrict_tag_not_found = "I could not find the tag you asked for."
+    restrict_changed_to_true = "I have protected that tag. Only you will be able to clone it to or pull it from other servers."
+    restrict_changed_to_false = "I have removed the protection on this tag. Anyone can now clone or pull it."
     
     #tag gift
-    gift_no_args = ""
-    gift_tag_not_found = ""
-    gift_target_not_found = ""
+    gift_no_args = "You asked me to give away a tag, but didn't give me enough info. Use `+tag gift 'tagname' 'owner'`"
+    gift_tag_not_found = "I couldn't find a tag with that name..."
+    gift_target_not_found = "I cannot find the person you wanted to give the tag to..."
     #the bot listens for "+accept {1}"
     # {0}     : Target name
     # {1}     : Tagname
-    gift_request = ""
-    gift_timeout = ""
-    gift_success = ""
+    gift_request = "{0}, please type `+accept {1}` to get this tag."
+    gift_timeout = "Tag gift request timed out."
+    gift_success = "I have transferred ownership of this tag."
     
-    #tag owner
-    owner_no_args = ""
-    owner_tag_not_found = ""
+    #tag info
+    info_no_args = "You asked about info for a tag, but didn't tell me which one. USe `+tag info tagname`"
+    info_tag_not_found = "I could not find a tag with that name..."
     # {0}     : Tag name
-    owner_left = "Use `+tag claim {0}`"
+    info_header = "Info for `+tag {0}`:"
     # {0}     : Owner name
-    owner_found = ""
+    info_owner = " - This tag is owned by **{0}**"
+    # {0}     : Tag name
+    info_owner_left = " - This tag is orphaned. Use `+tag claim {0}` to take it."
+    # {0}     : Tag uses
+    info_total_uses = " - This tag has **{0}** uses"
+    # {0}     : Total duplicates (>= 2)
+    info_duplicates = " - This tag is identical accross {0} servers"
+    info_is_nsfw = " - This tag is marked NSFW"
+    info_is_restricted = " - This tag is protected"
+    info_is_closed_source = " - This tag is closed source"
+    info_is_deleting = " - This tag will delete its call"
     
     #tag list
-    list_target_not_found = ""
+    list_target_not_found = "I couldn't find the member to list tags for..."
     # {0}     : Server name
     # {1}     : Tag list (format "`, `".join)
-    list_server_element = ""
-    list_msg_too_long = ""
+    list_server_element = "Tags for {0}: {1}"
+    list_msg_too_long = "Your tags are too long to send in a single message, so I will send a file instead."
     list_all_orphan_name = "Orphaned"
     
     #tag nsfw
-    nsfw_no_args = ""
-    nsfw_tag_not_found = ""
-    nsfw_changed_to_true = ""
-    nsfw_changed_to_false = ""
+    nsfw_no_args = "You asked me to toggle NSFW on a tag, but didn't tell me which. Use `+tag nsfw 'tagname'`"
+    nsfw_tag_not_found = "I couldn't find a tag with that name..."
+    nsfw_changed_to_true = "I have marked that tag as NSFW. It will no longer show up in `+tag random`"
+    nsfw_changed_to_false = "I have removed the NSFW mark on this tag. It will show up in `+tag random` again."
     #this listens for "continue"
     # {0}     : Tag count
-    nsfw_all_request = ""
-    nsfw_all_timeout = ""
-    nsfw_all_success = ""
+    nsfw_all_request = "You are about to remove the NSFW marks on {0} tags. Type `continue` to continue."
+    nsfw_all_timeout = "Tag nsfw all request timed out."
+    nsfw_all_success = "I have removed all NSFW marks on this server."
     
     #tag random
-    random_no_sfw_tags = ""
+    random_no_sfw_tags = "There are no (SFW) tags on this server to choose from..."
     # {0}     : Owner name
     # {1}     : Tag name
     # {2}     : Tag content
-    random_returned = ""
+    random_returned = "{0}'s tag '{1}'\n{2}"
     
     #tag search
-    search_no_query = ""
-    search_query_too_short = "" #min 3
-    search_no_results = ""
+    search_no_query = "You asked me to search for tags, but didn't tell me which one. Use `+tag search 'query'`"
+    search_query_too_short = "I am going to need a larger query to work with. Please use at least 3 letters." #min 3
+    search_no_results = "Your search returned no results..."
     # {0}     : Owner name
     # {1}     : Tag name
     # {2}     : Tag content
-    search_one_result = ""
+    search_one_result = "{0}'s tag '{1}'\n{2}"
     # {0}     : Tag count
     # {1}     : Tag list (format ", ".join)
-    search_multiple_results = ""
+    search_multiple_results = "I found {0} tags:\n{1}"
     
     #tag claim
-    claim_no_arg = ""
-    claim_tag_not_found = ""
+    claim_no_arg = "You asked me to give you a tag, but didn't say which. Use `+tag claim 'tagname'`"
+    claim_tag_not_found = "I could not find a tag with that name."
     # {0}     : Owner name
-    claim_already_owned = ""
-    claim_success = ""
+    claim_already_owned = "That tag already belongs to {0}. Maybe ask them to `+tag gift` it to you."
+    claim_success = "I have given you that tag."
     
     #tag export
-    export_no_tags = ""
+    export_no_tags = "You do not have any tags to export."
     # {0}     : Tag count
     # {1}     : Tag list
-    export_overview = ""
-    export_overview_count_only = ""
+    export_overview = "Exporting {0} tags:\n{1}"
+    export_overview_count_only = "Exporting {0} tags."
     
     #tag import
-    import_no_attachment =""
-    import_fetch_error = ""
-    import_fetch_timeout = ""
-    import_file_corruption = ""
+    import_no_attachment ="You asked me to import, but didn't give me a file. Attach a file and give it the caption `+tag import`"
+    import_fetch_error = "An error occured and I could not retrieve your file."
+    import_fetch_timeout = "It took too long to retrieve your file... Sorry about that"
+    import_file_corruption = "It seems your file is corrupted. Use `+tag export` to get a fresh file."
     #bot listens for "++nsfw"
-    import_nsfw_request = ""
+    import_nsfw_request = "Do you wish to import tags marked nsfw? Use `++nsfw`"
     # {0}     : Success count
     # {1}     : Total attempts
     # {2}     : Failed count
     # {3}     : Failed list
     # {4}     : Success list
-    import_success = ""
-    import_success_no_success_list = ""
-    import_success_no_tag_list = ""
+    import_success = "I have imported {0}/{1} tags with {2} failures.\nSuccess: {4}\nFailed: {3}"
+    import_success_no_success_list = "I have imported {0}/{1} tags with {2} failures.\nFailed: {3}"
+    import_success_no_tag_list = "I have imported {0}/{1} tags with {2} failures."
+    
+    #tag hidden
+    hidden_no_args = "You asked me to delete your calls on a tag, but didn't tell me which one. Use `+tag hidden 'tagname'`"
+    hidden_tag_not_found = "I could not find a tag with that name."
+    hidden_changed_to_true = "I will start deleting call messages for this tag."
+    hidden_changed_to_false = "I will stop deleting call messages for this tag."
+    
+    #tag closed
+    closed_no_args = "You asked me to close the source of a TagNA tag, but didn't say which, Use `+tag closed 'tagname'`"
+    closed_tag_not_found = "I cannot find a tag with that name."
+    closed_changed_to_true = "I will start rejecting `+tag raw` commands for this tag."
+    closed_changed_to_false = "I will stop rejecting `+tag raw` commands for this tag."
     
     #tag eval
     #plug http://fennekid.github.io here
-    eval_no_args = ""
-    reply_too_long = ""
+    eval_no_args = "You asked me to eval a tag, but didn't give me a tag. Use `+tag eval 'contents' ['args']`"
+    reply_too_long = "I tried to evaluate that tag, but the reply was too long."
+    
+    #tag raw
+    raw_no_args = "You asked for a raw tag, but didn't tell me which. Use `+tag raw 'tagname'`"
+    raw_closed_tag = "The owner of that tag has made it closed source."
+    
+class Taginfo:
+    shorthelp = "This is a help delegation for `+tag`"
+    longhelp = ("`+tag gift 'tagname' 'member'` gives away a tag\n"
+                "`+tag info 'tagname'` gets info about a tag\n"
+                "`+tag list ['member']` gets your's or another user's tags\n"
+                "`+tag list all` gets all the tags on the server in a file\n"
+                "`+tag search 'query'` searches tags by name\n"
+                "`+tag claim 'tagname'` claims a tag left behind by a person who left\n"
+                " -- Bot Admin --\n"
+                "`+tag nsfw all` removes the nsfw from all tags on the server\n"
+                " -- Server Admin --\n"
+                "`+tag welcome ['new content']` sets the tag that is used in +welcome")
+    """
+    This is a help shell to break down +tag
+    Available commands:
+    -- user
+    `+tag gift 'tagname' 'new owner'`
+    `+tag info 'tagname'`
+    `+tag list ['username']`
+    `+tag list all`
+    `+tag search 'query'`
+    `+tag claim 'tagname'`
+    -- bot admin
+    `+tag nsfw all`
+    -- server admin
+    `+tag welcome 'content'
+    """
+
+class Tagmovement:
+    shorthelp = "This is a help delegation for `+tag`"
+    longhelp = ("`+tag export` write all of your non-private tags to a file.\n"
+                "`+tag import` `<<file upload` adds all the tags in the file to the server.\n"
+                "`+tag clone 'tagname' 'server' ['newname']` clones a tag to the target server\n"
+                "`+tag push 'tagname' 'server' ['newname']` pulls a tag from the source server\n"
+                "`+tag restrict 'tagname'` toggles whether a tag can be pulled or cloned\n"
+                "To use `import`, you should drop a tag file into discord and make the caption `+tag import`")
+    """
+    This is a help shell to break down +tag
+    Available commands:
+    `+tag export`
+    `+tag import` <<Upload
+    `+tag clone 'tagname' 'server' ['new name']`
+    `+tag pull 'tagname' 'server' ['new name']`
+    `+tag private 'tagname'`
+    """
+
+class Tagna:
+    shorthelp = "This is a help delegation for `+tag`"
+    longhelp = ("`+tag eval 'content' ['args']` lets you execute a tag without saving\n"
+                "`+tag raw 'tagname'` gets the raw content of a non-secret tag\n"
+                "`+tag debug 'tagname'` posts a execution debug of a tag\n"
+                "`+tag deval 'content' ['args']` same as debug + eval\n"
+                "`+tag closed 'tagname'` toggles a tag's closed-source status\n"
+                "`+tag hidden 'tagname'` toggles whether a tag call should be deleted")
+    """
+    This is a help shell to break down +tag
+    Available commands:
+    `+tag eval 'content' ['args']`
+    `+tag raw 'tagname'`
+    `+tag debug 'tagname'`
+    `+tag deval 'content' ['args']`
+    `+tag secret 'tagname'`
+    """
     
 class Toggle:
-    shorthelp = ""
-    longhelp = ""
+    shorthelp = "Lets me disable commands"
+    longhelp = ("`+toggle list` lists commands that have been disabled\n"
+                "`+toggle 'Set'` disables or enables all commands in the set\n"
+                "`+toggle 'command'` disables or enables individual commands\n"
+                "`+toggle !` disables or enables alt calling with !calls\n"
+                "With the exception of `!`, All disables commands can still be used by Moderators.")
     """
     Available commands:
     `+toggle list`
@@ -1944,88 +2099,140 @@ class Toggle:
     `+toggle 'command name'`
     `+toggle !`
     """
-    no_arguements = ""
+    no_arguements = "You asked me about toggling, but didn't tell me what to do. Use `+help toggle`"
     
     #toggle list
-    list_no_disabled_commands = ""
-    list_header = ""
+    list_no_disabled_commands = "Alls good here. None of my commands are disabled."
+    list_header = "Disabled commands:"
     # {0}     : Category name
     # {1}     : Command List
-    list_command_entry = ""
-    list_alt_calling_disabled = ""
+    list_command_entry = "**{0}**: {1}"
+    list_alt_calling_disabled = "Alt calling on `!` is disabled."
     
     #toggle alt
-    alt_call_disabled = ""
-    alt_call_enabled = ""
+    alt_call_disabled = "I will no longer listen to !command calls."
+    alt_call_enabled = "I will start listening to !command calls except where they will conflict with @R. Danny"
     
     #toggle command
-    command_cannot_disable_bot = ""
-    command_disabled = ""
-    command_enabled = ""
+    command_cannot_disable_bot = "I cannot disable any **Bot** category commands."
+    command_disabled = "I have disabled that command."
+    command_enabled = "I have enabled that command."
     
     #toggle set
-    set_cannot_disable_bot = ""
-    set_command_or_set_not_found = ""
+    set_cannot_disable_bot = "I cannot disable my **Bot** categury commands."
+    set_command_or_set_not_found = "I could not find the command or command set you are looking for..."
     # {0}     : Count
     # {1}     : Command list
-    set_disabled = ""
-    set_enabled = ""
+    set_disabled = "I have disabled {0} commands:\n{1}"
+    set_enabled = "I have enabled {0} commands:\n{1}"
     
 class Welcome:
     shorthelp = ""
     longhelp = ""
     """
     Available commands:
-    `+welcome 'code'`
-    Availaboe codes:
-    1: Default message
-    2: Hug
-    3: PM owner
-    4: +tag welcome
-    5: Wait until sending
-    6: Wait & +tag welcome
-    0: No Action
-    Replacement markers:
+    `+welcome 'type' 'code'`
+    `+welcome info`
+    
+    Availaboe types:
+    `dest`    the place to send to
+        `server`  to server.default_channel
+        `here`    to message.channel
+        `owner`   to server.owner PM
+        `new`     to new member PM
+    `message` the message to send
+        `none`    disables sending
+        `basic`   generic message
+        `hug`     friendly message
+        `tag`     use tag welcome
+    `roles`   the giveme to assign
+        `giveme`  to start giving roles
+        `none`    to stop giving roles
+    `wait`    the time to post a message
+        `instant` posts on join
+        `typing`  posts on first typing
+        `message` posts on first message
+    
+    Tag replacement markers:
     {user}  : username
     {@user} : usermention
     {id}    : user id
     """
-    welcome_types = [
-        "no action",
-        "welcome new users",
-        "send hugs",
-        "ping {0.owner.name}",
-        "use `+tag welcome`",
-        "wait until first message",
-        "tag on first message"
-    ]
+    welcome_types = {
+        "message": {
+            "none": "Do nothing",
+            "basic": "Send a generic message",
+            "hug": "Send a welcome hug",
+            "tag": "Use `+tag welcome`"
+        },
+        "dest": {
+            "server": "Send to the default channel",
+            "here": "Send to this channel",
+            # {0}     : Owner name
+            "owner": "PM {0}",
+            "new": "PM the new user"
+        },
+        "roles": {
+            "giveme": "Assign `+giverole welcome`",
+            "none": "Will not assign roles"
+        },
+        "wait": {
+            "instant": "Send message instantly",
+            "typing": "Wait for typing",
+            "message": "Wait for message"
+        }
+    }
     
-    no_arguement = ""
-    # {0}     : Option from welcome_types
-    change_success = ""
+    no_arguement = "You asked about welcome behaviours, but didn't tell me what to change. Use `+help welcome` for details"
+    # {0}     : Type 
+    # {1}     : Message from dict
+    change_success = "I have changed the welcome {0} to **{1}**"
     
+    #messages to the server
     # {0}     : Member name
     # {1}     : Server name
-    welcome_message = ""
+    server_welcome_message = "Welcome to the {1} server, {0}. Have a nice stay."
+    server_wait_on_message = "By the way, {0} is a new user."
     # {0}     : Member name
-    welcome_hug = "Yay~! New member! Hi {0}! \\*hug*"
+    server_welcome_hug = "Yay~! New member! Hi {0}! \\*hug*"
+    
+    #messages sent to owner
     # {0}     : Member name
     # {1}     : Server name
-    welcome_pm = ""
-    # {0}     : Member name
-    welcome_no_tag = ""
+    owner_welcome_message = "{0} has just joined your {1} server."
+    owner_welcome_hug = "Um... {0} just joined {1}. Good luck \\*hug*"
     
-    no_permission_for_default_channel = "'Send Messages'"
+    #messages sent to user
+    user_welcome_message = "Welcome to our server. This message is a bit boring so you may wanna ask one of the mods to set up a `+tag welcome` to make this message nicer :3"
+    user_welcome_hug = "Welcome to our server \\*hug*"
+    
+    # {0}     : Member name
+    welcome_no_tag = "Welcome to our server {0}. I was meant to post a better message, but none of the mods have set up a `+tag welcome` yet..."
+    
+    welcome_role_broken = "I was meant to give you a special new member role, but I cannot find it. It must have been changed or removed"
+    no_permission_for_roles = "I require the Manage Roles permission to assign roles"
+    no_welcome_role_set_up = "I was asked to give you a role, but wasn't told which one. Can a moderator please set up `+giverole welcome`"
+    
+    no_permission_for_default_channel = "I require the Send Messages permission for the default channel to use this command."
+    
+    #welcome info
+    # {0}     : Message from the dict
+    # {1}     : Dest from the dict
+    info_message = " - My messaging behaviours are **{0}** and **{1}**\n - Use `+welcome message none` to disable"
+    info_no_message_sent = " - I will not send any messages."
+    # {0}     : Wait timer
+    info_wait = " - My welcome delay behaviour is **{0}**"
+    info_add_role = " - I will assign `+giverole welcome` when a member joins.\n - Use `+welcome role none` to disable"
     
 class Misc:
     #called 25% on table flip
-    table_unflip = "â”¬â”€â”¬ãƒŽ( Âº _ ÂºãƒŽ)"
+    table_unflip = "nuu! leave the tables alone! ┬─┬﻿ ノ( ゜-゜ノ)"
     
     #called when quotes mismatch
-    quote_mismatching = ""
+    quote_mismatching = "I could not understand your command because you mismatched quotes..."
     
     #called on redtext error
-    bad_gateway_error_message = ""
+    bad_gateway_error_message = "You know that red message thing that sometimes happens? Yeah. Us bots get that too."
 
-    name_choice_footer = "Enter the number of the person you meant"
+    name_choice_footer = "Enter the number only"
     name_choice_too_long = "The name search you tried means there are too many people to choose. Maybe consider a mention or DiscordTag instead"

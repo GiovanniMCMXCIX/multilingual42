@@ -1991,6 +1991,7 @@ class Welcome:
     """
     Available commands:
     `+welcome 'type' 'code'`
+    `+welcome info`
     
     Availaboe types:
     `dest`    the place to send to
@@ -2072,6 +2073,15 @@ class Welcome:
     no_welcome_role_set_up = ""
     
     no_permission_for_default_channel = "'Send Messages'"
+    
+    #welcome info
+    # {0}     : Message from the dict
+    # {1}     : Dest from the dict
+    info_message = ""
+    info_no_message_sent = ""
+    # {0}     : Wait timer
+    info_wait = ""
+    info_add_role = ""
     
 class Rolestate:
     shorthelp = ""
