@@ -1239,8 +1239,7 @@ class Info:
     #info server > 42
     # {0}     : 42 joined
     server_me_joined_at = " - I joined the server at {0}."
-    # {0}     : Welcome behaviour
-    server_me_welcome = " - This servers current welcome behaviour is **{0}**"
+    server_me_welcome = " - This servers current welcome behaviour can be found on `+welcome info`"
     # {0}     : Tag count
     server_me_tag_count = " - This server has {0} tags on."
     
@@ -1455,7 +1454,7 @@ class Dexentry:
 class Movedex:
     shorthelp = "makes me get data about a Pokémon move"
     longhelp = ("`+movedex 'name'`\n"
-                "This command is only available in English."
+                "This command is only available in English.")
     """
     Availavble commands:
     `+movedex 'movename'`

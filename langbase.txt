@@ -1102,7 +1102,9 @@ class Info:
     user_target_not_found = ""
     # {0}     : Name
     # {1}     : Discriminator
+    # {2}     : Nick name
     user_name = ""
+    user_nick_name = ""
     # {0}     : ID
     user_id = ""
     # {0}     : Created date
@@ -1113,6 +1115,7 @@ class Info:
     # {0:06X} : Colour
     user_colour = ""
     # {0}     : Colour name
+    user_colour_is_named = ""
     user_colour_is_default = ""
     # {0}     : Server join date
     msg_days_ago = "{0} Days ago"
@@ -1175,7 +1178,6 @@ class Info:
     #info server > 42
     # {0}     : 42 joined
     server_me_joined_at = ""
-    # {0}     : Welcome behaviour
     server_me_welcome = ""
     # {0}     : Tag count
     server_me_tag_count = ""
