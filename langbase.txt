@@ -530,11 +530,12 @@ class Kick:
     longhelp = ""
     """
     Available commands:
-    `+kick 'member'`
+    `+kick 'member' ['message']`
     """
     no_arguements = ""
     no_member_found = ""
     too_many_members = ""
+    no_suicide = ""
     command_success = ""
     no_permission = "'Kick Members'"
     
@@ -545,11 +546,12 @@ class Ban:
     longhelp = ""
     """
     Available commands:
-    `+ban 'member'`
+    `+ban 'member' ['message']`
     """
     no_arguements = ""
     no_member_found = ""
     too_many_members = ""
+    no_suicide = ""
     command_success = ""
     no_permission = "'Ban Members'"
 
@@ -558,11 +560,12 @@ class Softban:
     longhelp = ""
     """
     Available commands:
-    `+Softban 'member'`
+    `+Softban 'member' ['message']`
     """
     no_arguements = ""
     no_member_found = ""
     too_many_members = ""
+    no_suicide = ""
     command_success = ""
     no_permission = "'Ban Members'"
 
@@ -1609,10 +1612,11 @@ class Remove:
     remove_success = ""
     
     #remove user
+    user_no_target = ""
     #this message waits for "continue"
     # {0}     : the (> 1) number of users to delete
     user_multi_request = ""
-    user_nulti_timeout = ""
+    user_multi_timeout = ""
     
     #remove contains
     contains_no_query = ""
