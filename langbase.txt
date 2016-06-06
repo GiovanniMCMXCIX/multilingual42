@@ -2130,6 +2130,25 @@ class Enter:
     shorthelp = ""
     longhelp = None
     
+class Alias:
+    shorthelp = ""
+    longhelp = ""
+    """
+    Available commands:
+    `+alias 'char'`
+    `+alias +`
+    aliases cannot contain any whitespace
+    """
+    
+    # {0}     : Current Alias
+    current_alias = ""
+    
+    #an alias cannot contain spaces
+    invalid_alias = ""
+    # {0}     : New Alias
+    set_success = ""
+    remove_success = ""
+    
 class Misc:
     #called 25% on table flip
     table_unflip = "nuu! leave the tables alone!" # + /unflip
